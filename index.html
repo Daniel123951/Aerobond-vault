@@ -25,13 +25,18 @@ body{background:#0F111A;color:white}
 <span class="font-bold text-xl">AeroBond Vault</span>
 </div>
 
-<div class="flex items-center gap-3">
-<div class="flex border border-white/20 rounded overflow-hidden">
-<button class="lang-btn lang-active px-3 py-1" data-lang="en">EN</button>
-<button class="lang-btn px-3 py-1" data-lang="es">ES</button>
-<button class="lang-btn px-3 py-1" data-lang="zh">ZH</button>
-</div>
-<button id="connectBtn" class="bg-cyan-400 text-black px-4 py-2 rounded-lg font-semibold"></button>
+<div class="flex flex-col sm:flex-row items-end sm:items-center gap-2 sm:gap-3">
+
+  <div class="flex border border-white/20 rounded overflow-hidden text-sm">
+    <button class="lang-btn lang-active px-2 py-1 sm:px-3 sm:py-1" data-lang="en">EN</button>
+    <button class="lang-btn px-2 py-1 sm:px-3 sm:py-1" data-lang="es">ES</button>
+    <button class="lang-btn px-2 py-1 sm:px-3 sm:py-1" data-lang="zh">ZH</button>
+  </div>
+
+  <button id="connectBtn"
+    class="bg-cyan-400 text-black px-4 py-2 rounded-lg font-semibold whitespace-nowrap w-full sm:w-auto">
+  </button>
+
 </div>
 
 </div>
