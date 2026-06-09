@@ -38,8 +38,8 @@
  <body data-template-id="__page-root" class="w-full min-h-screen text-white">
   <nav class="w-full px-6 py-4 flex items-center justify-between border-b border-white/10">
    <div class="flex items-center gap-3">
-    <!-- Imagen del logo en la barra de navegación -->
-    <img src="logo.png" alt="AeroBond Logo" class="w-8 h-8 object-contain">
+    <!-- Tu archivo logo.png configurado correctamente con clases de Canva intactas -->
+    <img src="logo.png" alt="AeroBond Logo" class="canva-image w-8 h-8 object-contain">
     <span data-template-id="nav-title" class="canva-text text-xl font-bold"></span>
    </div>
    <div class="flex items-center gap-3">
@@ -57,7 +57,7 @@
      <div class="flex flex-wrap gap-4"><button data-template-id="cta-launch" class="canva-button px-6 py-3 rounded font-semibold glow-cyan transition hover:opacity-90 bg-cyan_accent text-midnight"></button> <button data-template-id="cta-docs" class="canva-button px-6 py-3 rounded font-semibold border-2 border-cyan_accent text-cyan_accent transition hover:opacity-80 bg-transparent"></button>
      </div>
     </div>
-    <!-- Imagen del logo flotante principal -->
+    <!-- Tu archivo logo.png animado flotante con clases de Canva intactas -->
     <div class="flex items-center justify-center"><img src="logo.png" data-template-id="hero-logo" class="canva-image floating-logo h-64 w-auto drop-shadow-2xl" loading="lazy">
     </div>
    </div>
@@ -97,6 +97,18 @@
     </div>
    </div>
   </main>
+  <section class="w-full max-w-3xl mx-auto px-6 pb-16">
+   <div data-template-id="vault-panel" class="canva-panel rounded-2xl p-8 border border-white/10 bg-slate_card">
+    <h2 data-template-id="vault-title" class="canva-text font-bold mb-6 text-center text-2xl"></h2>
+    <div class="mb-6"><label data-template-id="vault-input-label" class="canva-text text-sm opacity-70 mb-2 block" for="bond-input"></label> <input id="bond-input" type="number" placeholder="0.00" class="w-full bg-midnight border border-white/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan_accent transition">
+    </div>
+    <div data-template-id="vault-breakdown" class="canva-card rounded-lg p-4 mb-6 border border-white/5 bg-midnight">
+     <p data-template-id="vault-breakdown-text" class="canva-text text-sm leading-relaxed"></p>
+    </div><button data-template-id="vault-execute-btn" class="canva-button w-full py-3 rounded-lg font-semibold glow-green transition hover:opacity-90 bg-emerald_accent text-midnight" onclick="handleExecute()"></button>
+    <p id="execute-msg" class="text-center text-sm mt-3 text-emerald_accent hidden">Transaction simulated successfully.</p>
+    <p id="execute-error" class="text-center text-sm mt-3 text-red-400 hidden"></p>
+   </div>
+  </section>
   <section class="w-full max-w-3xl mx-auto px-6 pb-16">
    <div data-template-id="vault-panel" class="canva-panel rounded-2xl p-8 border border-white/10 bg-slate_card">
     <h2 data-template-id="vault-title" class="canva-text font-bold mb-6 text-center text-2xl"></h2>
@@ -286,7 +298,8 @@
 
     setLanguage('en');
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a091432b79c81fd2',t:'MTc4MTAxOTkxNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=window.addEventListener||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a091432b79c81fd2',t:'MTc4MTAxOTkxNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=window.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
 
 
