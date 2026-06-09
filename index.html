@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AeroBond Vault</title>
 <script src="https://cdn.tailwindcss.com"></script>
+
 <style>
 body{background:#0F111A;color:white}
 .hero-bg{background:radial-gradient(circle at top right,#00e5ff20,transparent 30%),radial-gradient(circle at bottom left,#22c55e15,transparent 30%)}
@@ -13,10 +14,12 @@ body{background:#0F111A;color:white}
 .lang-active{background:#22d3ee;color:black}
 </style>
 </head>
+
 <body>
 
 <nav class="border-b border-white/10">
-<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+<div class="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
+
 <div class="flex items-center gap-3">
 <img src="./logo.png" class="h-10 w-auto" alt="Logo">
 <span class="font-bold text-xl">AeroBond Vault</span>
@@ -30,35 +33,42 @@ body{background:#0F111A;color:white}
 </div>
 <button id="connectBtn" class="bg-cyan-400 text-black px-4 py-2 rounded-lg font-semibold"></button>
 </div>
+
 </div>
 </nav>
 
 <section class="hero-bg">
-<div class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-10 items-center">
+<div class="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center text-center md:text-left">
+
 <div>
-<h1 id="heroTitle" class="text-5xl font-bold leading-tight mb-6"></h1>
-<p id="heroSubtitle" class="text-gray-300 text-lg mb-8"></p>
-<div class="flex gap-4">
+<h1 id="heroTitle" class="text-3xl md:text-5xl font-bold leading-tight mb-6"></h1>
+<p id="heroSubtitle" class="text-gray-300 text-base md:text-lg mb-8"></p>
+
+<div class="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
 <button id="launchBtn" class="bg-cyan-400 text-black px-6 py-3 rounded-lg font-semibold"></button>
 <button id="docsBtn" class="border border-cyan-400 text-cyan-400 px-6 py-3 rounded-lg font-semibold"></button>
 </div>
 </div>
+
 <div class="flex justify-center">
-<img src="./logo.png" class="floating max-h-[400px] w-auto drop-shadow-2xl" alt="Logo">
+<img src="./logo.png" class="floating max-h-[250px] md:max-h-[400px] w-auto mx-auto drop-shadow-2xl" alt="Logo">
 </div>
+
 </div>
 </section>
 
-<section class="max-w-7xl mx-auto px-6 py-10">
-<div class="grid md:grid-cols-3 gap-6">
+<section class="max-w-7xl mx-auto px-4 md:px-6 py-10">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 <div class="bg-slate-800 rounded-xl p-6">
 <h3 class="text-cyan-400 text-xl font-bold mb-3" id="tvlLabel"></h3>
 <p class="text-3xl font-bold">$0.00</p>
 </div>
+
 <div class="bg-slate-800 rounded-xl p-6">
 <h3 class="text-cyan-400 text-xl font-bold mb-3" id="tlosLabel"></h3>
 <p id="tlosPrice" class="text-3xl font-bold">Loading...</p>
 </div>
+
 <div class="bg-slate-800 rounded-xl p-6">
 <h3 class="text-green-400 text-xl font-bold mb-3" id="btcLabel"></h3>
 <p class="text-3xl font-bold" id="btcValue"></p>
@@ -66,19 +76,33 @@ body{background:#0F111A;color:white}
 </div>
 </section>
 
-<section class="max-w-7xl mx-auto px-6 py-16">
+<section class="max-w-7xl mx-auto px-4 md:px-6 py-16">
 <h2 id="mechanicsTitle" class="text-4xl font-bold text-center mb-12"></h2>
-<div class="grid md:grid-cols-3 gap-6">
-<div class="bg-slate-800 p-6 rounded-xl"><h3 id="seedTitle" class="text-cyan-400 text-xl font-bold mb-4"></h3><p id="seedDesc"></p></div>
-<div class="bg-slate-800 p-6 rounded-xl"><h3 id="inflTitle" class="text-cyan-400 text-xl font-bold mb-4"></h3><p id="inflDesc"></p></div>
-<div class="bg-slate-800 p-6 rounded-xl"><h3 id="btcTitle" class="text-green-400 text-xl font-bold mb-4"></h3><p id="btcDesc"></p></div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-slate-800 p-6 rounded-xl">
+<h3 id="seedTitle" class="text-cyan-400 text-xl font-bold mb-4"></h3>
+<p id="seedDesc"></p>
+</div>
+
+<div class="bg-slate-800 p-6 rounded-xl">
+<h3 id="inflTitle" class="text-cyan-400 text-xl font-bold mb-4"></h3>
+<p id="inflDesc"></p>
+</div>
+
+<div class="bg-slate-800 p-6 rounded-xl">
+<h3 id="btcTitle" class="text-green-400 text-xl font-bold mb-4"></h3>
+<p id="btcDesc"></p>
+</div>
 </div>
 </section>
 
-<section class="max-w-3xl mx-auto px-6 pb-20">
+<section class="max-w-3xl mx-auto px-4 md:px-6 pb-20">
 <div class="bg-slate-800 rounded-2xl p-8">
 <h2 id="vaultTitle" class="text-center text-3xl font-bold mb-8"></h2>
+
 <input type="number" id="bondInput" class="w-full bg-black border border-gray-700 rounded-lg px-4 py-3 mb-6" placeholder="0.00">
+
 <button id="executeBtn" class="w-full bg-green-500 text-black py-3 rounded-lg font-bold"></button>
 </div>
 </section>
@@ -93,6 +117,7 @@ en:{connect:"Connect Wallet",hero:"Automated Liquidity Optimization & Bond Vault
 es:{connect:"Conectar Billetera",hero:"Optimización de Liquidez Automatizada y Bóvedas de Bonos en Telos EVM",sub:"Maximiza la estabilidad del rendimiento con bonos progresivos respaldados por Bitcoin.",launch:"Lanzar Aplicación",docs:"Leer Documentación",tvl:"Valor Total Bloqueado",tlos:"Precio TLOS en Vivo",btc:"Precio Base Respaldado por BTC",dyn:"Dinámico",mech:"Mecánicas Principales",seed:"Bóvedas Semilla",seedd:"Fase inicial con bonos de 5¢ a 7.5¢.",infl:"Bonos de Influenciador",infld:"Bonos promocionales de 10¢ a 25¢.",btct:"Protección de Piso Bitcoin",btcd:"La acumulación automática de BTC fortalece el protocolo.",vault:"Panel de Bóveda 25/75",exec:"Ejecutar Pago Instantáneo"},
 zh:{connect:"连接钱包",hero:"Telos EVM 上的自动化流动性优化和债券金库",sub:"通过由比特币支持的自动价格下限提高收益稳定性。",launch:"启动应用",docs:"阅读文档",tvl:"锁定总价值",tlos:"实时 TLOS 价格",btc:"BTC 支持底价",dyn:"动态",mech:"核心机制",seed:"种子金库",seedd:"早期融资阶段。",infl:"影响者债券",infld:"10¢ 至 25¢ 的推广债券。",btct:"比特币底价保护",btcd:"自动积累 BTC。",vault:"25/75 金库仪表板",exec:"执行即时支付"}
 };
+
 function setLang(l){
 let t=T[l];
 connectBtn.textContent=t.connect;
@@ -114,6 +139,7 @@ btcDesc.textContent=t.btcd;
 vaultTitle.textContent=t.vault;
 executeBtn.textContent=t.exec;
 }
+
 document.querySelectorAll(".lang-btn").forEach(b=>{
 b.onclick=()=>{
 document.querySelectorAll(".lang-btn").forEach(x=>x.classList.remove("lang-active"));
@@ -121,6 +147,7 @@ b.classList.add("lang-active");
 setLang(b.dataset.lang);
 }
 });
+
 setLang("en");
 
 async function loadPrice(){
@@ -128,10 +155,14 @@ try{
 const r=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=telos&vs_currencies=usd');
 const d=await r.json();
 tlosPrice.textContent='$'+d.telos.usd.toFixed(5);
-}catch(e){tlosPrice.textContent='$0.01135';}
+}catch(e){
+tlosPrice.textContent='$0.01135';
 }
+}
+
 loadPrice();
 setInterval(loadPrice,60000);
 </script>
+
 </body>
 </html>
