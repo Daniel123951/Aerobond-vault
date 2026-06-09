@@ -3,171 +3,84 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>AeroBond Vault</title>
-
 <script src="https://cdn.tailwindcss.com"></script>
-
 <style>
-body{
-    background:#0F111A;
-    color:white;
-}
-
-.hero-bg{
-    background:
-    radial-gradient(circle at top right,#00e5ff20,transparent 30%),
-    radial-gradient(circle at bottom left,#22c55e15,transparent 30%);
-}
-
-.floating{
-    animation: float 4s ease-in-out infinite;
-}
-
-@keyframes float{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-15px);}
-}
+body{background:#0F111A;color:white}
+.hero-bg{background:radial-gradient(circle at top right,#00e5ff20,transparent 30%),radial-gradient(circle at bottom left,#22c55e15,transparent 30%)}
+.floating{animation:float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+.lang-active{background:#22d3ee;color:black}
 </style>
-
 </head>
 <body>
 
 <nav class="border-b border-white/10">
 <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-
 <div class="flex items-center gap-3">
-<img src="./logo.png" class="h-10 w-auto">
+<img src="./logo.png" class="h-10 w-auto" alt="Logo">
 <span class="font-bold text-xl">AeroBond Vault</span>
 </div>
 
-<button class="bg-cyan-400 text-black px-4 py-2 rounded-lg font-semibold">
-Connect Wallet
-</button>
-
+<div class="flex items-center gap-3">
+<div class="flex border border-white/20 rounded overflow-hidden">
+<button class="lang-btn lang-active px-3 py-1" data-lang="en">EN</button>
+<button class="lang-btn px-3 py-1" data-lang="es">ES</button>
+<button class="lang-btn px-3 py-1" data-lang="zh">ZH</button>
+</div>
+<button id="connectBtn" class="bg-cyan-400 text-black px-4 py-2 rounded-lg font-semibold"></button>
+</div>
 </div>
 </nav>
 
 <section class="hero-bg">
 <div class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-10 items-center">
-
 <div>
-<h1 class="text-5xl font-bold leading-tight mb-6">
-Automated Liquidity Optimization &
-Bond Vaults on Telos EVM
-</h1>
-
-<p class="text-gray-300 text-lg mb-8">
-Maximize yield stability with progressive bond phases and an automated floor price backed by Bitcoin.
-</p>
-
+<h1 id="heroTitle" class="text-5xl font-bold leading-tight mb-6"></h1>
+<p id="heroSubtitle" class="text-gray-300 text-lg mb-8"></p>
 <div class="flex gap-4">
-<button class="bg-cyan-400 text-black px-6 py-3 rounded-lg font-semibold">
-Launch App
-</button>
-
-<button class="border border-cyan-400 text-cyan-400 px-6 py-3 rounded-lg font-semibold">
-Read Docs
-</button>
+<button id="launchBtn" class="bg-cyan-400 text-black px-6 py-3 rounded-lg font-semibold"></button>
+<button id="docsBtn" class="border border-cyan-400 text-cyan-400 px-6 py-3 rounded-lg font-semibold"></button>
 </div>
 </div>
-
 <div class="flex justify-center">
-<img src="./logo.png"
-class="floating max-h-[400px] w-auto drop-shadow-2xl">
+<img src="./logo.png" class="floating max-h-[400px] w-auto drop-shadow-2xl" alt="Logo">
 </div>
-
 </div>
 </section>
 
 <section class="max-w-7xl mx-auto px-6 py-10">
-
 <div class="grid md:grid-cols-3 gap-6">
-
 <div class="bg-slate-800 rounded-xl p-6">
-<h3 class="text-cyan-400 text-xl font-bold mb-3">
-Total Value Locked
-</h3>
+<h3 class="text-cyan-400 text-xl font-bold mb-3" id="tvlLabel"></h3>
 <p class="text-3xl font-bold">$0.00</p>
 </div>
-
 <div class="bg-slate-800 rounded-xl p-6">
-<h3 class="text-cyan-400 text-xl font-bold mb-3">
-Live TLOS Price
-</h3>
+<h3 class="text-cyan-400 text-xl font-bold mb-3" id="tlosLabel"></h3>
 <p id="tlosPrice" class="text-3xl font-bold">Loading...</p>
 </div>
-
 <div class="bg-slate-800 rounded-xl p-6">
-<h3 class="text-green-400 text-xl font-bold mb-3">
-BTC Backed Floor
-</h3>
-<p class="text-3xl font-bold">Dynamic</p>
+<h3 class="text-green-400 text-xl font-bold mb-3" id="btcLabel"></h3>
+<p class="text-3xl font-bold" id="btcValue"></p>
 </div>
-
 </div>
-
 </section>
 
 <section class="max-w-7xl mx-auto px-6 py-16">
-
-<h2 class="text-4xl font-bold text-center mb-12">
-Core Mechanics
-</h2>
-
+<h2 id="mechanicsTitle" class="text-4xl font-bold text-center mb-12"></h2>
 <div class="grid md:grid-cols-3 gap-6">
-
-<div class="bg-slate-800 p-6 rounded-xl">
-<h3 class="text-cyan-400 text-xl font-bold mb-4">
-Seed Vaults
-</h3>
-<p>
-Early seed funding phase with bonds maturing from 5¢ to 7.5¢.
-</p>
+<div class="bg-slate-800 p-6 rounded-xl"><h3 id="seedTitle" class="text-cyan-400 text-xl font-bold mb-4"></h3><p id="seedDesc"></p></div>
+<div class="bg-slate-800 p-6 rounded-xl"><h3 id="inflTitle" class="text-cyan-400 text-xl font-bold mb-4"></h3><p id="inflDesc"></p></div>
+<div class="bg-slate-800 p-6 rounded-xl"><h3 id="btcTitle" class="text-green-400 text-xl font-bold mb-4"></h3><p id="btcDesc"></p></div>
 </div>
-
-<div class="bg-slate-800 p-6 rounded-xl">
-<h3 class="text-cyan-400 text-xl font-bold mb-4">
-Influencer Bonds
-</h3>
-<p>
-Promotional bond tiers ranging from 10¢ to 25¢.
-</p>
-</div>
-
-<div class="bg-slate-800 p-6 rounded-xl">
-<h3 class="text-green-400 text-xl font-bold mb-4">
-Bitcoin Floor Protection
-</h3>
-<p>
-Automatic BTC accumulation helps strengthen the protocol floor.
-</p>
-</div>
-
-</div>
-
 </section>
 
 <section class="max-w-3xl mx-auto px-6 pb-20">
-
 <div class="bg-slate-800 rounded-2xl p-8">
-
-<h2 class="text-center text-3xl font-bold mb-8">
-25/75 Vault Dashboard
-</h2>
-
-<input
-type="number"
-placeholder="Bond Redemption Amount"
-class="w-full bg-black border border-gray-700 rounded-lg px-4 py-3 mb-6">
-
-<button
-class="w-full bg-green-500 text-black py-3 rounded-lg font-bold">
-Execute Instant Payout
-</button>
-
+<h2 id="vaultTitle" class="text-center text-3xl font-bold mb-8"></h2>
+<input type="number" id="bondInput" class="w-full bg-black border border-gray-700 rounded-lg px-4 py-3 mb-6" placeholder="0.00">
+<button id="executeBtn" class="w-full bg-green-500 text-black py-3 rounded-lg font-bold"></button>
 </div>
-
 </section>
 
 <footer class="border-t border-white/10 py-8 text-center text-gray-400">
@@ -175,32 +88,50 @@ AeroBond Vault © 2026
 </footer>
 
 <script>
+const T={
+en:{connect:"Connect Wallet",hero:"Automated Liquidity Optimization & Bond Vaults on Telos EVM",sub:"Maximize yield stability with progressive bond phases and an automated floor price backed by Bitcoin.",launch:"Launch App",docs:"Read Docs",tvl:"Total Value Locked",tlos:"Live TLOS Price",btc:"BTC Backed Floor Price",dyn:"Dynamic",mech:"Core Mechanics",seed:"Seed Vaults",seedd:"Early seed funding phase with bonds maturing from 5¢ to 7.5¢.",infl:"Influencer Bonds",infld:"Promotional bond tiers ranging from 10¢ to 25¢.",btct:"Bitcoin Floor Protection",btcd:"Automatic BTC accumulation helps strengthen the protocol floor.",vault:"25/75 Vault Dashboard",exec:"Execute Instant Payout"},
+es:{connect:"Conectar Billetera",hero:"Optimización de Liquidez Automatizada y Bóvedas de Bonos en Telos EVM",sub:"Maximiza la estabilidad del rendimiento con bonos progresivos respaldados por Bitcoin.",launch:"Lanzar Aplicación",docs:"Leer Documentación",tvl:"Valor Total Bloqueado",tlos:"Precio TLOS en Vivo",btc:"Precio Base Respaldado por BTC",dyn:"Dinámico",mech:"Mecánicas Principales",seed:"Bóvedas Semilla",seedd:"Fase inicial con bonos de 5¢ a 7.5¢.",infl:"Bonos de Influenciador",infld:"Bonos promocionales de 10¢ a 25¢.",btct:"Protección de Piso Bitcoin",btcd:"La acumulación automática de BTC fortalece el protocolo.",vault:"Panel de Bóveda 25/75",exec:"Ejecutar Pago Instantáneo"},
+zh:{connect:"连接钱包",hero:"Telos EVM 上的自动化流动性优化和债券金库",sub:"通过由比特币支持的自动价格下限提高收益稳定性。",launch:"启动应用",docs:"阅读文档",tvl:"锁定总价值",tlos:"实时 TLOS 价格",btc:"BTC 支持底价",dyn:"动态",mech:"核心机制",seed:"种子金库",seedd:"早期融资阶段。",infl:"影响者债券",infld:"10¢ 至 25¢ 的推广债券。",btct:"比特币底价保护",btcd:"自动积累 BTC。",vault:"25/75 金库仪表板",exec:"执行即时支付"}
+};
+function setLang(l){
+let t=T[l];
+connectBtn.textContent=t.connect;
+heroTitle.textContent=t.hero;
+heroSubtitle.textContent=t.sub;
+launchBtn.textContent=t.launch;
+docsBtn.textContent=t.docs;
+tvlLabel.textContent=t.tvl;
+tlosLabel.textContent=t.tlos;
+btcLabel.textContent=t.btc;
+btcValue.textContent=t.dyn;
+mechanicsTitle.textContent=t.mech;
+seedTitle.textContent=t.seed;
+seedDesc.textContent=t.seedd;
+inflTitle.textContent=t.infl;
+inflDesc.textContent=t.infld;
+btcTitle.textContent=t.btct;
+btcDesc.textContent=t.btcd;
+vaultTitle.textContent=t.vault;
+executeBtn.textContent=t.exec;
+}
+document.querySelectorAll(".lang-btn").forEach(b=>{
+b.onclick=()=>{
+document.querySelectorAll(".lang-btn").forEach(x=>x.classList.remove("lang-active"));
+b.classList.add("lang-active");
+setLang(b.dataset.lang);
+}
+});
+setLang("en");
+
 async function loadPrice(){
-
 try{
-
-const response = await fetch(
-'https://api.coingecko.com/api/v3/simple/price?ids=telos&vs_currencies=usd'
-);
-
-const data = await response.json();
-
-document.getElementById('tlosPrice').innerText =
-'$' + data.telos.usd.toFixed(5);
-
+const r=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=telos&vs_currencies=usd');
+const d=await r.json();
+tlosPrice.textContent='$'+d.telos.usd.toFixed(5);
+}catch(e){tlosPrice.textContent='$0.01135';}
 }
-catch{
-
-document.getElementById('tlosPrice').innerText =
-'$0.01135';
-
-}
-
-}
-
 loadPrice();
 setInterval(loadPrice,60000);
 </script>
-
 </body>
 </html>
