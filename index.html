@@ -38,7 +38,7 @@
  <body data-template-id="__page-root" class="w-full min-h-screen text-white">
   <nav class="w-full px-6 py-4 flex items-center justify-between border-b border-white/10">
    <div class="flex items-center gap-3">
-    <!-- Logo integrado en la barra de navegación -->
+    <!-- Imagen del logo en la barra de navegación -->
     <img src="logo.png" alt="AeroBond Logo" class="w-8 h-8 object-contain">
     <span data-template-id="nav-title" class="canva-text text-xl font-bold"></span>
    </div>
@@ -57,8 +57,8 @@
      <div class="flex flex-wrap gap-4"><button data-template-id="cta-launch" class="canva-button px-6 py-3 rounded font-semibold glow-cyan transition hover:opacity-90 bg-cyan_accent text-midnight"></button> <button data-template-id="cta-docs" class="canva-button px-6 py-3 rounded font-semibold border-2 border-cyan_accent text-cyan_accent transition hover:opacity-80 bg-transparent"></button>
      </div>
     </div>
-    <!-- Logo flotante principal de la cabecera -->
-    <div class="flex items-center justify-center"><img src="logo.png" data-template-id="hero-logo" alt="AeroBond Vault" class="canva-image floating-logo h-64 w-auto drop-shadow-2xl" loading="lazy">
+    <!-- Imagen del logo flotante principal -->
+    <div class="flex items-center justify-center"><img src="logo.png" data-template-id="hero-logo" class="canva-image floating-logo h-64 w-auto drop-shadow-2xl" loading="lazy">
     </div>
    </div>
   </header>
@@ -148,3 +148,145 @@
         'error-msg': 'Please enter a valid amount'
       },
       es: {
+        'nav-title': 'AeroBond Vault',
+        'connect-wallet-btn': 'Conectar Billetera',
+        'hero-title': 'Optimización de Liquidez Automatizada y Bóvedas de Bonos en Telos EVM',
+        'hero-subtitle': 'Maximiza la estabilidad de rendimiento con fases de bonos progresivos y un precio mínimo automatizado respaldado por Bitcoin.',
+        'cta-launch': 'Lanzar Aplicación',
+        'cta-docs': 'Leer Documentación',
+        'stat-tvl-label': 'Valor Total Bloqueado (TVL)',
+        'stat-tlos-label': 'Precio TLOS en Vivo',
+        'stat-btc-label': 'Precio Base Respaldado por BTC',
+        'stat-btc-value': 'Dinámico',
+        'stat-tvl-value': '$0.00',
+        'mechanics-title': 'Mecánicas Principales',
+        'card-seed-title': 'Bóvedas de Semilla',
+        'card-seed-desc': 'Fase de financiamiento inicial con bonos que vencen de 5¢ a 7.5¢. Diseñado para contribuyentes de liquidez fundamental.',
+        'card-influencer-title': 'Bonos de Influenciador',
+        'card-influencer-desc': 'Niveles de bonos promocionales que van de 10¢ a 25¢. Estructurado para catalizadores de crecimiento de red.',
+        'card-btc-title': 'Protección de Piso de Bitcoin',
+        'card-btc-desc': 'Los dos niveles inferiores de recompra acumulan automáticamente BTC, escalando el piso de precio con la apreciación de Bitcoin.',
+        'vault-title': 'El Panel de Bóveda 25/75',
+        'vault-input-label': 'Cantidad de Canje de Bonos',
+        'vault-breakdown-text': 'Efectivo Instantáneo: 25% pagado inmediatamente en stablecoins líquidos. 75% se capitaliza automáticamente y se reinvierte en la siguiente fase.',
+        'vault-execute-btn': 'Ejecutar Pago Instantáneo',
+        'footer-disclaimer': 'Los protocolos DeFi conllevan riesgos inherentes incluyendo vulnerabilidades de contratos inteligentes, pérdida impermanente y volatilidad del mercado. Esto no es asesoramiento financiero.',
+        'error-msg': 'Por favor, ingresa una cantidad válida'
+      },
+      zh: {
+        'nav-title': 'AeroBond Vault',
+        'connect-wallet-btn': '连接钱包',
+        'hero-title': 'Telos EVM 上的自动化流动性优化和债券金库',
+        'hero-subtitle': '通过渐进式债券阶段和由比特币支持的自动价格下限来最大化收益稳定性。',
+        'cta-launch': '启动应用',
+        'cta-docs': '阅读文档',
+        'stat-tvl-label': '锁定总价值 (TVL)',
+        'stat-tlos-label': '实时 TLOS 价格',
+        'stat-btc-label': 'BTC 支持的底价',
+        'stat-btc-value': '动态',
+        'stat-tvl-value': '$0.00',
+        'mechanics-title': '核心机制',
+        'card-seed-title': '种子金库',
+        'card-seed-desc': '早期种子融资阶段，债券从 5¢ 到 7.5¢ 到期。为寻求先发优势的基础流动性贡献者设计。',
+        'card-influencer-title': '影响者债券',
+        'card-influencer-desc': '促销债券等级从 10¢ 到 25¢。为网络增长催化剂和社区放大器结构化。',
+        'card-btc-title': '比特币底价保护',
+        'card-btc-desc': '底部两个回购级别自动积累 BTC，随着比特币价值升值而扩展网络价格底线。',
+        'vault-title': '25/75 金库仪表板',
+        'vault-input-label': '债券赎回金额',
+        'vault-breakdown-text': '即时兑现：25% 立即以流动性稳定币支付。75% 自动复合并滚入下一个连续债券阶段。',
+        'vault-execute-btn': '执行即时支付',
+        'footer-disclaimer': 'DeFi 协议存在内在风险，包括智能合约漏洞、无常损失和市场波动。这不是财务建议。',
+        'error-msg': '请输入有效金额'
+      }
+    };
+
+    let currentLang = 'en';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      const langData = translations[lang];
+      Object.keys(langData).forEach(templateId => {
+        if (templateId === 'error-msg') return;
+        const els = document.querySelectorAll(`[data-template-id="${templateId}"]`);
+        els.forEach(el => {
+          if (el.tagName === 'INPUT') {
+            el.placeholder = langData[templateId];
+          } else {
+            el.textContent = langData[templateId];
+          }
+        });
+      });
+    }
+
+    async function fetchTlosPrice() {
+      try {
+        const response = await fetch('https://coingecko.com');
+        const data = await response.json();
+        const price = data.telos.usd;
+        document.getElementById('tlos-price-container').textContent = '$' + price.toFixed(5);
+      } catch (e) {
+        document.getElementById('tlos-price-container').textContent = '$0.01135';
+      }
+    }
+
+    fetchTlosPrice();
+    setInterval(fetchTlosPrice, 60000);
+
+    document.querySelectorAll('.lang-btn').forEach((btn, idx) => {
+      const langs = ['en', 'es', 'zh'];
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        setLanguage(langs[idx]);
+      });
+    });
+
+    document.getElementById('connect-wallet').addEventListener('click', function() {
+      const isConnected = this.dataset.connected === 'true';
+      if (!isConnected) {
+        this.dataset.connected = 'true';
+        this.textContent = '0xAB...CD (Connected)';
+        this.style.opacity = '0.7';
+        setTimeout(() => {
+          this.dataset.connected = 'false';
+          setLanguage(currentLang);
+          this.style.opacity = '1';
+        }, 3000);
+      }
+    });
+
+    function handleExecute() {
+      const input = document.getElementById('bond-input');
+      const amount = parseFloat(input.value);
+      const errorEl = document.getElementById('execute-error');
+      const msgEl = document.getElementById('execute-msg');
+
+      errorEl.classList.add('hidden');
+      msgEl.classList.add('hidden');
+
+      if (!amount || amount <= 0) {
+        errorEl.textContent = translations[currentLang]['error-msg'];
+        errorEl.classList.remove('hidden');
+        return;
+      }
+
+      const btn = document.querySelector('[data-template-id="vault-execute-btn"]');
+      btn.disabled = true;
+      btn.style.opacity = '0.5';
+
+      setTimeout(() => {
+        msgEl.classList.remove('hidden');
+        btn.disabled = false;
+        btn.style.opacity = '1';
+        input.value = '';
+        setTimeout(() => msgEl.classList.add('hidden'), 3000);
+      }, 1500);
+    }
+
+    setLanguage('en');
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a091432b79c81fd2',t:'MTc4MTAxOTkxNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=window.addEventListener||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
+
