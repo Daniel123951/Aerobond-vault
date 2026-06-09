@@ -3,241 +3,291 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AeroBond Protocol</title>
+  <title>AeroBond Vault</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        midnight: '#0F111A',
+                        slate_card: '#1E2235',
+                        cyan_accent: '#00E5FF',
+                        emerald_accent: '#22C55E'
+                    }
+                }
+            }
+        }
+    </script>
   <style>
-    body { font-family: 'DM Sans', sans-serif; }
-    .neon-glow { box-shadow: 0 0 20px rgba(0,229,255,0.3), 0 0 40px rgba(0,229,255,0.1); }
-    .card-hover:hover { transform: translateY(-4px); }
-    .card-hover { transition: transform 0.3s ease; }
-  </style>
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+        body { font-family: 'DM Sans', sans-serif; }
+        .glow-cyan { box-shadow: 0 0 20px rgba(0,229,255,0.3); }
+        .glow-green { box-shadow: 0 0 20px rgba(34,197,94,0.3); }
+        .lang-btn.active { background: #00E5FF; color: #0F111A; }
+    </style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
   <script src="/_sdk/resizing_sdk.js" type="text/javascript"></script>
  <script src="/_sdk/telemetry_sdk.js"></script></head>
- <body data-template-id="__page-root" class="min-h-screen"><button id="lang-toggle" class="fixed top-4 right-4 z-50 bg-white/10 backdrop-blur border border-cyan-400/30 text-white px-3 py-2 rounded-lg font-semibold text-sm hover:bg-white/20 transition-all cursor-pointer">EN</button>
-  <header class="px-6 py-8 lg:px-16 lg:py-20">
-   <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
-    <div class="flex-1 space-y-6">
-     <h1 data-template-id="hero-title" class="canva-text text-4xl lg:text-5xl font-bold leading-tight"></h1>
-     <p data-template-id="hero-subtitle" class="canva-text text-lg opacity-80"></p>
-     <div class="flex flex-wrap gap-4 pt-4"><button id="btn-wallet" data-template-id="btn-wallet" class="canva-button px-6 py-3 rounded-lg font-semibold neon-glow cursor-pointer transition-all hover:opacity-80 active:scale-95"></button> <button id="btn-bonds" data-template-id="btn-bonds" class="canva-button px-6 py-3 rounded-lg font-semibold border border-cyan-400/50 cursor-pointer transition-all hover:opacity-80 active:scale-95"></button>
-     </div>
-    </div>
-    <div class="flex-1 max-w-lg"><img data-template-id="hero-image" class="canva-image w-full rounded-2xl opacity-90" loading="lazy">
-    </div>
+ <body data-template-id="__page-root" class="w-full min-h-screen text-white">
+  <!-- NAV -->
+  <nav class="w-full px-6 py-4 flex items-center justify-between border-b border-white/10">
+   <div class="flex items-center gap-3">
+    <svg width="32" height="32" viewbox="0 0 32 32" fill="none"><rect x="4" y="8" width="24" height="18" rx="3" stroke="#00E5FF" stroke-width="2" /><path d="M10 8V6a6 6 0 0112 0v2" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" /><circle cx="16" cy="18" r="3" fill="#00E5FF" />
+    </svg><span data-template-id="nav-title" class="canva-text text-xl font-bold"></span>
    </div>
-  </header>
-  <section data-template-id="stats-bar" class="canva-section px-6 py-6 lg:px-16">
-   <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-    <div class="text-center p-4 rounded-xl bg-white/5">
-     <p data-template-id="stat1-label" class="canva-text text-sm opacity-60"></p>
-     <p data-template-id="stat1-value" class="canva-text text-2xl font-bold mt-1"></p>
-    </div>
-    <div class="text-center p-4 rounded-xl bg-white/5">
-     <p data-template-id="stat2-label" class="canva-text text-sm opacity-60"></p>
-     <p id="tlos-price" class="text-2xl font-bold mt-1 text-cyan-400">$0.01148</p>
-    </div>
-    <div class="text-center p-4 rounded-xl bg-white/5">
-     <p data-template-id="stat3-label" class="canva-text text-sm opacity-60"></p>
-     <p data-template-id="stat3-value" class="canva-text text-2xl font-bold mt-1"></p>
-    </div>
+   <div class="flex items-center gap-3">
+    <div class="flex rounded overflow-hidden border border-white/20">
+     <button class="lang-btn active px-3 py-1 text-sm font-semibold transition">EN</button> <button class="lang-btn px-3 py-1 text-sm font-semibold text-gray-400 hover:text-white transition">ES</button> <button class="lang-btn px-3 py-1 text-sm font-semibold text-gray-400 hover:text-white transition">ZH</button>
+    </div><button id="connect-wallet" data-template-id="connect-wallet-btn" class="canva-button px-4 py-2 rounded font-semibold text-sm transition hover:opacity-90 glow-cyan"></button>
    </div>
-  </section>
-  <main class="px-6 py-16 lg:px-16">
-   <div class="max-w-7xl mx-auto">
-    <h2 data-template-id="mechanics-title" class="canva-text text-3xl font-bold text-center mb-12"></h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-     <div data-template-id="card1" class="canva-card rounded-2xl p-8 card-hover">
-      <div class="text-3xl mb-4">
-       🌱
-      </div>
-      <h3 data-template-id="card1-title" class="canva-text text-xl font-bold mb-3"></h3>
-      <p data-template-id="card1-desc" class="canva-text opacity-70 text-sm leading-relaxed"></p>
+  </nav><!-- HERO -->
+  <header class="w-full relative overflow-hidden">
+   <div class="absolute inset-0 opacity-20">
+    <img data-template-id="hero-bg-image" class="canva-image w-full h-full object-cover" loading="lazy">
+   </div>
+   <div class="relative z-10 max-w-7xl mx-auto px-6 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center">
+    <div class="flex flex-col">
+     <h1 data-template-id="hero-title" class="canva-text font-bold leading-tight mb-4"></h1>
+     <p data-template-id="hero-subtitle" class="canva-text mb-8 opacity-80"></p>
+     <div class="flex flex-wrap gap-4">
+      <button data-template-id="cta-launch" class="canva-button px-6 py-3 rounded font-semibold glow-cyan transition hover:opacity-90"></button> <button data-template-id="cta-docs" class="canva-button px-6 py-3 rounded font-semibold border-2 transition hover:opacity-80"></button>
      </div>
-     <div data-template-id="card2" class="canva-card rounded-2xl p-8 card-hover">
-      <div class="text-3xl mb-4">
-       🎯
-      </div>
-      <h3 data-template-id="card2-title" class="canva-text text-xl font-bold mb-3"></h3>
-      <p data-template-id="card2-desc" class="canva-text opacity-70 text-sm leading-relaxed"></p>
-     </div>
-     <div data-template-id="card3" class="canva-card rounded-2xl p-8 card-hover">
-      <div class="text-3xl mb-4">
-       🛡️
-      </div>
-      <h3 data-template-id="card3-title" class="canva-text text-xl font-bold mb-3"></h3>
-      <p data-template-id="card3-desc" class="canva-text opacity-70 text-sm leading-relaxed"></p>
+    </div>
+    <div class="flex items-center justify-center">
+     <div class="relative">
+      <style>
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
+        }
+        .floating-logo {
+          animation: float 3s ease-in-out infinite;
+          background: transparent;
+        }
+      </style><img data-template-id="hero-logo" class="canva-image floating-logo h-64 w-auto drop-shadow-2xl" loading="lazy">
      </div>
     </div>
    </div>
-  </main>
-  <section class="px-6 py-16 lg:px-16">
-   <div class="max-w-3xl mx-auto">
-    <div data-template-id="app-container" class="canva-panel rounded-3xl p-8 lg:p-12 border border-cyan-500/20 neon-glow">
-     <h2 data-template-id="app-title" class="canva-text text-2xl font-bold mb-2 text-center"></h2>
-     <p data-template-id="app-subtitle" class="canva-text text-sm opacity-60 text-center mb-8"></p>
-     <div class="space-y-6">
-      <div><label data-template-id="input-label" class="canva-text text-sm font-medium mb-2 block" for="token-input"></label> <input id="token-input" type="number" min="0" placeholder="0.00" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-lg focus:outline-none focus:border-cyan-400/50">
-      </div>
-      <div class="grid grid-cols-2 gap-4 p-4 rounded-xl bg-white/5">
-       <div class="text-center">
-        <p data-template-id="split-cash-label" class="canva-text text-xs opacity-50"></p>
-        <p id="cash-value" class="text-xl font-bold text-green-400 mt-1">0.00</p>
-       </div>
-       <div class="text-center">
-        <p data-template-id="split-reinvest-label" class="canva-text text-xs opacity-50"></p>
-        <p id="reinvest-value" class="text-xl font-bold text-cyan-400 mt-1">0.00</p>
-       </div>
-      </div>
-      <p data-template-id="app-explanation" class="canva-text text-xs opacity-50 text-center"></p><button id="app-cta" data-template-id="app-cta" class="canva-button w-full py-4 rounded-xl font-bold text-lg neon-glow cursor-pointer transition-all hover:opacity-80 active:scale-95"></button>
+  </header><!-- STATS BAR -->
+  <section data-template-id="stats-bar" class="canva-section w-full border-y border-white/10">
+   <div class="max-w-7xl mx-auto px-6 py-6 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+    <div>
+     <p data-template-id="stat-tvl-label" class="canva-text text-sm opacity-60 mb-1"></p>
+     <p data-template-id="stat-tvl-value" class="canva-text text-2xl font-bold"></p>
+    </div>
+    <div>
+     <p data-template-id="stat-tlos-label" class="canva-text text-sm opacity-60 mb-1"></p>
+     <div id="tlos-price-container" class="text-2xl font-bold text-cyan_accent">
+      --
      </div>
+    </div>
+    <div>
+     <p data-template-id="stat-btc-label" class="canva-text text-sm opacity-60 mb-1"></p>
+     <p data-template-id="stat-btc-value" class="canva-text text-2xl font-bold"></p>
     </div>
    </div>
-  </section>
-  <footer data-template-id="footer-section" class="canva-footer px-6 py-12 lg:px-16 border-t border-white/5">
-   <div class="max-w-7xl mx-auto">
-    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-     <div>
-      <p data-template-id="footer-brand" class="canva-text font-bold text-lg"></p>
-      <p data-template-id="footer-tagline" class="canva-text text-sm opacity-50 mt-1"></p>
-     </div>
-     <div class="flex gap-6"><a data-template-id="footer-link-docs" class="canva-link text-sm opacity-60 hover:opacity-100 cursor-pointer"></a> <a data-template-id="footer-link-x" class="canva-link text-sm opacity-60 hover:opacity-100 cursor-pointer"></a> <a data-template-id="footer-link-telegram" class="canva-link text-sm opacity-60 hover:opacity-100 cursor-pointer"></a>
-     </div>
+  </section><!-- CORE MECHANICS -->
+  <main class="w-full max-w-7xl mx-auto px-6 py-16">
+   <h2 data-template-id="mechanics-title" class="canva-text text-center font-bold mb-12"></h2>
+   <div class="grid md:grid-cols-3 gap-6">
+    <div data-template-id="card-seed" class="canva-card rounded-xl p-6 border border-white/10">
+     <h3 data-template-id="card-seed-title" class="canva-text font-bold mb-3"></h3>
+     <p data-template-id="card-seed-desc" class="canva-text text-sm opacity-70"></p>
     </div>
-    <p data-template-id="footer-disclaimer" class="canva-text text-xs opacity-30 mt-8 text-center leading-relaxed"></p>
+    <div data-template-id="card-influencer" class="canva-card rounded-xl p-6 border border-white/10">
+     <h3 data-template-id="card-influencer-title" class="canva-text font-bold mb-3"></h3>
+     <p data-template-id="card-influencer-desc" class="canva-text text-sm opacity-70"></p>
+    </div>
+    <div data-template-id="card-btc" class="canva-card rounded-xl p-6 border border-white/10">
+     <h3 data-template-id="card-btc-title" class="canva-text font-bold mb-3"></h3>
+     <p data-template-id="card-btc-desc" class="canva-text text-sm opacity-70"></p>
+    </div>
+   </div>
+  </main><!-- LIQUIDITY APP -->
+  <section class="w-full max-w-3xl mx-auto px-6 pb-16">
+   <div data-template-id="vault-panel" class="canva-panel rounded-2xl p-8 border border-white/10">
+    <h2 data-template-id="vault-title" class="canva-text font-bold mb-6 text-center"></h2>
+    <div class="mb-6">
+     <label data-template-id="vault-input-label" class="canva-text text-sm opacity-70 mb-2 block" for="bond-input"></label> <input id="bond-input" type="number" placeholder="0.00" class="w-full bg-midnight border border-white/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan_accent transition">
+    </div>
+    <div data-template-id="vault-breakdown" class="canva-card rounded-lg p-4 mb-6 border border-white/5">
+     <p data-template-id="vault-breakdown-text" class="canva-text text-sm leading-relaxed"></p>
+    </div><button data-template-id="vault-execute-btn" class="canva-button w-full py-3 rounded-lg font-semibold glow-green transition hover:opacity-90" onclick="handleExecute()"></button>
+    <p id="execute-msg" class="text-center text-sm mt-3 text-emerald_accent hidden">Transaction simulated successfully.</p>
+   </div>
+  </section><!-- FOOTER -->
+  <footer data-template-id="footer-section" class="canva-footer w-full border-t border-white/10 px-6 py-8">
+   <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="flex gap-6">
+     <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-cyan_accent transition"><i data-lucide="twitter" style="width:20px;height:20px"></i></a> <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-cyan_accent transition"><i data-lucide="send" style="width:20px;height:20px"></i></a> <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-cyan_accent transition"><i data-lucide="github" style="width:20px;height:20px"></i></a>
+    </div>
+    <p data-template-id="footer-disclaimer" class="canva-text text-xs text-center md:text-right opacity-50 max-w-lg"></p>
    </div>
   </footer>
   <script src="/_sdk/editing_sdk.js"></script>
   <script>
-    // Live TLOS price
-    const tlosEl = document.getElementById('tlos-price');
-    async function fetchPrice() {
-      try {
-        const r = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=telos&vs_currencies=usd');
-        const d = await r.json();
-        if (d.telos && d.telos.usd) tlosEl.textContent = '$' + d.telos.usd.toFixed(5);
-      } catch(e) {}
-    }
-    fetchPrice();
-    setInterval(fetchPrice, 60000);
+        lucide.createIcons();
 
-    // Calculator
-    const input = document.getElementById('token-input');
-    const cashVal = document.getElementById('cash-value');
-    const reinvestVal = document.getElementById('reinvest-value');
-    input.addEventListener('input', () => {
-      const a = parseFloat(input.value) || 0;
-      cashVal.textContent = (a * 0.25).toFixed(2);
-      reinvestVal.textContent = (a * 0.75).toFixed(2);
-    });
+        // Translation data
+        const translations = {
+            en: {
+                'nav-title': 'AeroBond Vault',
+                'connect-wallet-btn': 'Connect Wallet',
+                'hero-title': 'Automated Liquidity Optimization & Bond Vaults on Telos EVM',
+                'hero-subtitle': 'Maximize yield stability with progressive bond phases and an automated floor price backed by Bitcoin.',
+                'cta-launch': 'Launch App',
+                'cta-docs': 'Read Docs',
+                'stat-tvl-label': 'Total Value Locked (TVL)',
+                'stat-tlos-label': 'Live TLOS Price',
+                'stat-btc-label': 'BTC-Backed Floor Price',
+                'mechanics-title': 'Core Mechanics',
+                'card-seed-title': 'Seed Vaults',
+                'card-seed-desc': 'Early seed funding phase with bonds maturing from 5¢ to 7.5¢. Designed for foundational liquidity contributors seeking first-mover advantage.',
+                'card-influencer-title': 'Influencer Bonds',
+                'card-influencer-desc': 'Promotional bonding tiers ranging from 10¢ to 25¢. Structured for network growth catalysts and community amplifiers.',
+                'card-btc-title': 'Bitcoin Floor Protection',
+                'card-btc-desc': 'The bottom two rebuy levels automatically accumulate BTC, scaling the network price floor with Bitcoin\'s value appreciation.',
+                'vault-title': 'The 25/75 Vault Dashboard',
+                'vault-input-label': 'Bond Redemption Amount',
+                'vault-breakdown-text': 'Instant Cashout: 25% paid out immediately in liquid stablecoins. 75% automatically auto-compounded and rolled over into the next consecutive bond phase.',
+                'vault-execute-btn': 'Execute Instant Payout',
+                'footer-disclaimer': 'DeFi protocols carry inherent risks including smart contract vulnerabilities, impermanent loss, and market volatility. This is not financial advice. Always DYOR.'
+            },
+            es: {
+                'nav-title': 'AeroBond Vault',
+                'connect-wallet-btn': 'Conectar Billetera',
+                'hero-title': 'Optimización de Liquidez Automatizada y Bóvedas de Bonos en Telos EVM',
+                'hero-subtitle': 'Maximiza la estabilidad de rendimiento con fases de bonos progresivos y un precio mínimo automatizado respaldado por Bitcoin.',
+                'cta-launch': 'Lanzar Aplicación',
+                'cta-docs': 'Leer Documentación',
+                'stat-tvl-label': 'Valor Total Bloqueado (TVL)',
+                'stat-tlos-label': 'Precio TLOS en Vivo',
+                'stat-btc-label': 'Precio Base Respaldado por BTC',
+                'mechanics-title': 'Mecánicas Principales',
+                'card-seed-title': 'Bóvedas de Semilla',
+                'card-seed-desc': 'Fase de financiamiento inicial con bonos que vencen de 5¢ a 7.5¢. Diseñado para contribuyentes de liquidez fundamental que buscan ventaja de primer movimiento.',
+                'card-influencer-title': 'Bonos de Influenciador',
+                'card-influencer-desc': 'Niveles de bonos promocionales que van de 10¢ a 25¢. Estructurado para catalizadores de crecimiento de red y amplificadores comunitarios.',
+                'card-btc-title': 'Protección de Piso de Bitcoin',
+                'card-btc-desc': 'Los dos niveles inferiores de recompra acumulan automáticamente BTC, escalando el piso de precio de la red con la apreciación del valor de Bitcoin.',
+                'vault-title': 'El Panel de Bóveda 25/75',
+                'vault-input-label': 'Cantidad de Canje de Bonos',
+                'vault-breakdown-text': 'Efectivo Instantáneo: 25% pagado inmediatamente en stablecoins líquidos. 75% se capitaliza automáticamente y se reinvierte en la siguiente fase de bonos consecutiva.',
+                'vault-execute-btn': 'Ejecutar Pago Instantáneo',
+                'footer-disclaimer': 'Los protocolos DeFi conllevan riesgos inherentes incluyendo vulnerabilidades de contratos inteligentes, pérdida impermanente y volatilidad del mercado. Esto no es asesoramiento financiero. Siempre investiga.'
+            },
+            zh: {
+                'nav-title': 'AeroBond Vault',
+                'connect-wallet-btn': '连接钱包',
+                'hero-title': 'Telos EVM 上的自动化流动性优化和债券金库',
+                'hero-subtitle': '通过渐进式债券阶段和由比特币支持的自动价格下限来最大化收益稳定性。',
+                'cta-launch': '启动应用',
+                'cta-docs': '阅读文档',
+                'stat-tvl-label': '锁定总价值 (TVL)',
+                'stat-tlos-label': '实时 TLOS 价格',
+                'stat-btc-label': 'BTC 支持的底价',
+                'mechanics-title': '核心机制',
+                'card-seed-title': '种子金库',
+                'card-seed-desc': '早期种子融资阶段，债券从 5¢ 到 7.5¢ 到期。为寻求先发优势的基础流动性贡献者设计。',
+                'card-influencer-title': '影响者债券',
+                'card-influencer-desc': '促销债券等级从 10¢ 到 25¢。为网络增长催化剂和社区放大器结构化。',
+                'card-btc-title': '比特币底价保护',
+                'card-btc-desc': '底部两个回购级别自动积累 BTC，随着比特币价值升值而扩展网络价格底线。',
+                'vault-title': '25/75 金库仪表板',
+                'vault-input-label': '债券赎回金额',
+                'vault-breakdown-text': '即时兑现：25% 立即以流动性稳定币支付。75% 自动复合并滚入下一个连续债券阶段。',
+                'vault-execute-btn': '执行即时支付',
+                'footer-disclaimer': 'DeFi 协议存在内在风险，包括智能合约漏洞、无常损失和市场波动。这不是财务建议。始终进行研究。'
+            }
+        };
 
-    // Button feedback
-    function btnFeedback(btn, msg, ms=2000) {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const orig = btn.textContent;
-        btn.textContent = msg;
-        btn.style.opacity = '0.6';
-        setTimeout(() => { btn.textContent = orig; btn.style.opacity = '1'; }, ms);
-      });
-    }
-    btnFeedback(document.getElementById('btn-wallet'), '✓ Connected');
-    btnFeedback(document.getElementById('btn-bonds'), '✓ Opened');
+        let currentLang = 'en';
 
-    document.getElementById('app-cta').addEventListener('click', (e) => {
-      e.preventDefault();
-      const a = parseFloat(input.value) || 0;
-      if (a > 0) {
-        const btn = e.currentTarget;
-        const orig = btn.textContent;
-        btn.textContent = '✓ Withdrawal Processed';
-        btn.style.opacity = '0.6';
-        setTimeout(() => { btn.textContent = orig; btn.style.opacity = '1'; input.value = ''; cashVal.textContent = '0.00'; reinvestVal.textContent = '0.00'; }, 2500);
-      }
-    });
+        function setLanguage(lang) {
+            currentLang = lang;
+            const langData = translations[lang];
+            
+            Object.keys(langData).forEach(templateId => {
+                const elements = document.querySelectorAll(`[data-template-id="${templateId}"]`);
+                elements.forEach(el => {
+                    if (el.tagName === 'INPUT') {
+                        el.placeholder = langData[templateId];
+                    } else {
+                        el.textContent = langData[templateId];
+                    }
+                });
+            });
+        }
 
-    // Language toggle
-    const translations = {
-      es: {
-        'hero-title': 'Optimización de Liquidez y Bóvedas de Bonos en Telos EVM',
-        'hero-subtitle': 'Protocolo de bonos descentralizados con piso de precio respaldado en BTC. Rendimientos reales, sin inflación artificial.',
-        'btn-wallet': 'Conectar Billetera',
-        'btn-bonds': 'Ver Bonos',
-        'stat1-label': 'Total Bloqueado (TVL)',
-        'stat2-label': 'Precio de TLOS',
-        'stat3-label': 'Suelo Respaldado en BTC',
-        'mechanics-title': 'Mecánicas del Ecosistema',
-        'card1-title': 'Bóvedas Semilla', 'card1-desc': 'Accede temprano con bonos de $0.05 a $0.075. Diseñados para early adopters que buscan máximo rendimiento.',
-        'card2-title': 'Bonos para Influencers', 'card2-desc': 'Rango de $0.10 a $0.25 por bono. Programa de referidos con recompensas por crecimiento orgánico.',
-        'card3-title': 'Piso de Precio Automatizado', 'card3-desc': 'El valor mínimo del token está vinculado algorítmicamente a BTC. Protección contra caídas drásticas.',
-        'app-title': 'Retiro de Liquidez 25/75', 'app-subtitle': 'Simula tu retiro instantáneo del protocolo',
-        'input-label': 'Cantidad de Tokens', 'split-cash-label': '25% Efectivo Inmediato', 'split-reinvest-label': '75% Auto-Reinvertido',
-        'app-explanation': 'El 75% se reinvierte automáticamente en la siguiente fase de bonos, generando rendimiento compuesto.',
-        'app-cta': 'Ejecutar Retiro',
-        'footer-brand': 'AeroBond Protocol', 'footer-tagline': 'Bonos descentralizados en Telos EVM',
-        'footer-link-docs': 'Documentación', 'footer-link-x': 'X (Twitter)', 'footer-link-telegram': 'Telegram',
-        'footer-disclaimer': '⚠️ Este protocolo es experimental. Invertir en DeFi conlleva riesgos significativos. DYOR.'
-      },
-      zh: {
-        'hero-title': 'Telos EVM 上的流动性优化与债券金库',
-        'hero-subtitle': '以BTC支撑价格底线的去中心化债券协议。真实收益，无人为通胀。',
-        'btn-wallet': '连接钱包',
-        'btn-bonds': '查看债券',
-        'stat1-label': '总锁仓量 (TVL)',
-        'stat2-label': 'TLOS 价格',
-        'stat3-label': 'BTC支撑底价',
-        'mechanics-title': '生态系统机制',
-        'card1-title': '种子金库', 'card1-desc': '以$0.05至$0.075的价格提前入场。专为寻求最大收益的早期采用者设计。',
-        'card2-title': '影响力债券', 'card2-desc': '每张债券$0.10至$0.25。推荐计划奖励有机社区增长。',
-        'card3-title': '自动价格底线', 'card3-desc': '代币最低价值与BTC算法挂钩。防止市场剧烈下跌。',
-        'app-title': '25/75 流动性提取', 'app-subtitle': '模拟您的即时协议提取',
-        'input-label': '代币数量', 'split-cash-label': '25% 即时现金', 'split-reinvest-label': '75% 自动再投资',
-        'app-explanation': '75%自动再投资到下一阶段债券，为您的头寸产生复合收益。',
-        'app-cta': '执行提取',
-        'footer-brand': 'AeroBond Protocol', 'footer-tagline': 'Telos EVM上的去中心化债券',
-        'footer-link-docs': '文档', 'footer-link-x': 'X (Twitter)', 'footer-link-telegram': 'Telegram',
-        'footer-disclaimer': '⚠️ 此协议为实验性质。DeFi投资存在重大风险。DYOR。'
-      }
-    };
+        // Fetch TLOS price from CoinGecko API
+        async function fetchTlosPrice() {
+            try {
+                const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=telos&vs_currencies=usd');
+                const data = await response.json();
+                const price = data.telos.usd;
+                document.getElementById('tlos-price-container').textContent = '$' + price.toFixed(5);
+            } catch (error) {
+                console.error('Error fetching TLOS price:', error);
+                document.getElementById('tlos-price-container').textContent = '$0.01135';
+            }
+        }
 
-    const langs = ['en', 'es', 'zh'];
-    const langLabels = { en: 'EN', es: 'ES', zh: '中文' };
-    let langIdx = 0;
-    const enDefaults = {};
-    const langBtn = document.getElementById('lang-toggle');
+        // Fetch TLOS price on page load and refresh every 60 seconds
+        fetchTlosPrice();
+        setInterval(fetchTlosPrice, 60000);
 
-    function applyLang(lang) {
-      if (lang === 'en') {
-        Object.keys(enDefaults).forEach(id => {
-          const el = document.querySelector(`[data-template-id="${id}"]`);
-          if (el) el.textContent = enDefaults[id];
+        // Language button handlers
+        document.querySelectorAll('.lang-btn').forEach((btn, idx) => {
+            const langs = ['en', 'es', 'zh'];
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                setLanguage(langs[idx]);
+            });
         });
-      } else {
-        const t = translations[lang];
-        Object.keys(t).forEach(id => {
-          const el = document.querySelector(`[data-template-id="${id}"]`);
-          if (el) {
-            if (!enDefaults[id]) enDefaults[id] = el.textContent;
-            el.textContent = t[id];
-          }
+
+        // Connect Wallet button
+        document.getElementById('connect-wallet').addEventListener('click', function() {
+            const isConnected = this.dataset.connected === 'true';
+            if (!isConnected) {
+                this.dataset.connected = 'true';
+                this.textContent = '0xAB...CD (Connected)';
+                this.style.opacity = '0.7';
+                setTimeout(() => {
+                    this.dataset.connected = 'false';
+                    setLanguage(currentLang);
+                    this.style.opacity = '1';
+                }, 3000);
+            }
         });
-      }
-      langBtn.textContent = langLabels[lang];
-    }
 
-    setTimeout(() => {
-      Object.keys(translations.es).forEach(id => {
-        const el = document.querySelector(`[data-template-id="${id}"]`);
-        if (el) enDefaults[id] = el.textContent;
-      });
-    }, 500);
+        function handleExecute() {
+            const input = document.getElementById('bond-input');
+            const amount = parseFloat(input.value);
+            
+            if (!amount || amount <= 0) {
+                alert(currentLang === 'en' ? 'Please enter a valid amount' : currentLang === 'es' ? 'Por favor, ingresa una cantidad válida' : '请输入有效金额');
+                return;
+            }
 
-    langBtn.addEventListener('click', () => {
-      langIdx = (langIdx + 1) % langs.length;
-      applyLang(langs[langIdx]);
-    });
-  </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a090be274e3383e9',t:'MTc4MTAxNDQ2Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+            const btn = document.querySelector('[data-template-id="vault-execute-btn"]');
+            const msg = document.getElementById('execute-msg');
+            btn.disabled = true;
+            btn.style.opacity = '0.5';
+
+            setTimeout(() => {
+                msg.classList.remove('hidden');
+                btn.disabled = false;
+                btn.style.opacity = '1';
+                input.value = '';
+                setTimeout(() => msg.classList.add('hidden'), 3000);
+            }, 1500);
+        }
+
+        // Initialize language
+        setLanguage('en');
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a090db9b38af0f15',t:'MTc4MTAxNTY3NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
