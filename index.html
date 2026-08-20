@@ -8,41 +8,223 @@
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
   <style>
-    :root { --ink:#06111f; --navy:#081a2d; --panel:#0c2236; --cyan:#22d3ee; --ice:#baeefa; --muted:#9bb6c7; --line:rgba(103,203,230,.15); }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { margin:0; color:#f4fbff; background:var(--ink); font-family:"DM Sans",sans-serif; overflow-x:hidden; }
-    button,a { -webkit-tap-highlight-color:transparent; }
-    button:focus-visible,a:focus-visible { outline:2px solid var(--cyan); outline-offset:4px; }
-    .app-shell { width:100%; min-height:100%; background:radial-gradient(circle at 82% 5%,rgba(20,184,215,.16),transparent 25rem),radial-gradient(circle at 14% 45%,rgba(4,111,150,.15),transparent 28rem),var(--ink); }
-    .site-width { width:100%; max-width:1160px; margin:auto; padding:0 24px; }
-    .grid-field { background-image:linear-gradient(rgba(91,212,240,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(91,212,240,.035) 1px,transparent 1px); background-size:42px 42px; }
-    .eyebrow { color:var(--cyan); font-family:"Space Mono",monospace; font-size:.68rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; }
-    .section-title { letter-spacing:-.05em; line-height:1.04; }
-    .panel { border:1px solid var(--line); background:rgba(9,30,48,.86); box-shadow:0 24px 70px rgba(0,0,0,.2); }
-    .cta { display:inline-flex; align-items:center; justify-content:center; gap:.55rem; min-height:46px; padding:.75rem 1.05rem; border-radius:.65rem; font-size:.79rem; font-weight:700; letter-spacing:.03em; transition:.2s ease; }
-    .cta-primary { background:#22d3ee; color:#04131d; box-shadow:0 12px 28px rgba(34,211,238,.18); }
-    .cta-primary:hover { transform:translateY(-2px); box-shadow:0 18px 35px rgba(34,211,238,.28); }
-    .cta-secondary { border:1px solid rgba(186,238,250,.28); color:#c5f4ff; background:rgba(4,15,27,.46); }
-    .cta-secondary:hover { border-color:var(--cyan); background:rgba(34,211,238,.08); }
-    .hero { position:relative; overflow:hidden; min-height:590px; display:flex; align-items:center; }
-    .hero:before { content:""; position:absolute; inset:0; background:linear-gradient(90deg,#06111f 0%,rgba(6,17,31,.88) 43%,rgba(6,17,31,.55) 100%); z-index:0; }
-    .dot-wave { position:absolute; inset:0; opacity:.7; background-image:radial-gradient(circle,rgba(27,198,240,.4) 1px,transparent 1.5px); background-size:9px 9px; mask-image:radial-gradient(ellipse at 82% 48%,black 0%,rgba(0,0,0,.78) 30%,transparent 68%); }
-    .network-stage { position:relative; min-height:380px; overflow:hidden; border:1px solid rgba(98,214,239,.14); border-radius:1rem; background:radial-gradient(circle at center,rgba(34,211,238,.15),transparent 26%),rgba(8,27,45,.84); }
-    .orbit { position:absolute; left:50%; border:1px solid rgba(131,226,250,.14); border-radius:999px; transform:translateX(-50%); animation:pulse 6s ease-in-out infinite; }
-    .o1 { width:290px; height:290px; top:43px; } .o2 { width:195px; height:195px; top:91px; animation-delay:1s; }
-    .node { position:absolute; width:8px; height:8px; border-radius:50%; background:#baf4ff; box-shadow:0 0 0 5px rgba(34,211,238,.09),0 0 20px rgba(34,211,238,.9); animation:glow 3s ease-in-out infinite; }
-    .node.core { width:17px; height:17px; background:#22d3ee; box-shadow:0 0 0 9px rgba(34,211,238,.11),0 0 28px #22d3ee; }
-    .beam { position:absolute; height:1px; background:linear-gradient(90deg,transparent,rgba(34,211,238,.8),transparent); transform-origin:left; }
-    .card { transition:transform .2s ease,border-color .2s ease; }
-    .card:hover { transform:translateY(-4px); border-color:rgba(34,211,238,.4); }
-    .mobile-menu { display:none; } .mobile-menu.open { display:block; }
-    .chart { height:160px; background:repeating-linear-gradient(to bottom,transparent 0,transparent 31px,rgba(132,221,243,.08) 32px); }
-    @keyframes pulse { 50% { opacity:.48; transform:translateX(-50%) scale(1.035); } }
-    @keyframes glow { 50% { transform:scale(1.25); opacity:.8; } }
-    @media(max-width:767px){ .desktop-nav,.desktop-action{display:none}.hero{min-height:680px}.site-width{padding:0 18px}.network-stage{min-height:310px}.o1{width:245px;height:245px;top:32px}.o2{width:165px;height:165px;top:72px} }
-    @media(min-width:768px){ .menu-toggle{display:none} }
-    @media(prefers-reduced-motion:reduce){ *,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important} }
+    :root {
+      --ink: #06111f;
+      --navy: #081a2d;
+      --panel: #0c2236;
+      --cyan: #22d3ee;
+      --ice: #baeefa;
+      --muted: #9bb6c7;
+      --line: rgba(103, 203, 230, .15);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: #f4fbff;
+      background: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      overflow-x: hidden;
+    }
+
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button:focus-visible, a:focus-visible {
+      outline: 2px solid var(--cyan);
+      outline-offset: 4px;
+    }
+
+    .app-shell {
+      width: 100%;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at 82% 5%, rgba(20, 184, 215, .16), transparent 25rem),
+        radial-gradient(circle at 14% 45%, rgba(4, 111, 150, .15), transparent 28rem),
+        var(--ink);
+    }
+
+    .site-width {
+      width: 100%;
+      max-width: 1160px;
+      margin: auto;
+      padding: 0 24px;
+    }
+
+    .grid-field {
+      background-image:
+        linear-gradient(rgba(91, 212, 240, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(91, 212, 240, .035) 1px, transparent 1px);
+      background-size: 42px 42px;
+    }
+
+    .eyebrow {
+      color: var(--cyan);
+      font-family: "Space Mono", monospace;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      letter-spacing: -.05em;
+      line-height: 1.04;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      background: rgba(9, 30, 48, .86);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, .2);
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .55rem;
+      min-height: 46px;
+      padding: .75rem 1.05rem;
+      border-radius: .65rem;
+      font-size: .79rem;
+      font-weight: 700;
+      letter-spacing: .03em;
+      transition: .2s ease;
+    }
+
+    .cta-primary {
+      background: #22d3ee;
+      color: #04131d;
+      box-shadow: 0 12px 28px rgba(34, 211, 238, .18);
+    }
+
+    .cta-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 35px rgba(34, 211, 238, .28);
+    }
+
+    .cta-secondary {
+      border: 1px solid rgba(186, 238, 250, .28);
+      color: #c5f4ff;
+      background: rgba(4, 15, 27, .46);
+    }
+
+    .cta-secondary:hover {
+      border-color: var(--cyan);
+      background: rgba(34, 211, 238, .08);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 590px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, #06111f 0%, rgba(6, 17, 31, .88) 43%, rgba(6, 17, 31, .55) 100%);
+      z-index: 0;
+    }
+
+    .dot-wave {
+      position: absolute;
+      inset: 0;
+      opacity: .7;
+      background-image: radial-gradient(circle, rgba(27, 198, 240, .4) 1px, transparent 1.5px);
+      background-size: 9px 9px;
+      mask-image: radial-gradient(ellipse at 82% 48%, black 0%, rgba(0, 0, 0, .78) 30%, transparent 68%);
+    }
+
+    .network-stage {
+      position: relative;
+      min-height: 380px;
+      overflow: hidden;
+      border: 1px solid rgba(98, 214, 239, .14);
+      border-radius: 1rem;
+      background: radial-gradient(circle at center, rgba(34, 211, 238, .15), transparent 26%), rgba(8, 27, 45, .84);
+    }
+
+    .orbit {
+      position: absolute;
+      left: 50%;
+      border: 1px solid rgba(131, 226, 250, .14);
+      border-radius: 999px;
+      transform: translateX(-50%);
+      animation: pulse 6s ease-in-out infinite;
+    }
+
+    .o1 { width: 290px; height: 290px; top: 43px; }
+    .o2 { width: 195px; height: 195px; top: 91px; animation-delay: 1s; }
+
+    .node {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #baf4ff;
+      box-shadow: 0 0 0 5px rgba(34, 211, 238, .09), 0 0 20px rgba(34, 211, 238, .9);
+      animation: glow 3s ease-in-out infinite;
+    }
+
+    .node.core {
+      width: 17px;
+      height: 17px;
+      background: #22d3ee;
+      box-shadow: 0 0 0 9px rgba(34, 211, 238, .11), 0 0 28px #22d3ee;
+    }
+
+    .beam {
+      position: absolute;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(34, 211, 238, .8), transparent);
+      transform-origin: left;
+    }
+
+    .card { transition: transform .2s ease, border-color .2s ease; }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(34, 211, 238, .4);
+    }
+
+    .mobile-menu { display: none; }
+    .mobile-menu.open { display: block; }
+
+    .chart {
+      height: 160px;
+      background: repeating-linear-gradient(to bottom, transparent 0, transparent 31px, rgba(132, 221, 243, .08) 32px);
+    }
+
+    @keyframes pulse {
+      50% { opacity: .48; transform: translateX(-50%) scale(1.035); }
+    }
+
+    @keyframes glow {
+      50% { transform: scale(1.25); opacity: .8; }
+    }
+
+    @media (max-width: 767px) {
+      .desktop-nav, .desktop-action { display: none; }
+      .hero { min-height: 680px; }
+      .site-width { padding: 0 18px; }
+      .network-stage { min-height: 310px; }
+      .o1 { width: 245px; height: 245px; top: 32px; }
+      .o2 { width: 165px; height: 165px; top: 72px; }
+    }
+
+    @media (min-width: 768px) {
+      .menu-toggle { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
   </style>
   <script src="/_sdk/0e8d3a91e1c6f495.data_sdk.js" type="text/javascript" integrity="sha512-c00oDoGjsMgluCLLEyVl3suwEkgjOGGplVFbsilUoBg4aMKNmsL3mwsc9r0dPn95qiSZyjBousQXgROkAW7p/w=="></script>
   <script src="/_sdk/eba18683f23e5798.resizing_sdk.js" type="text/javascript" integrity="sha512-E0UWUllhwPXaNJtjyTKXWKrIE+FruPfFpO4mRmMDP2LI+U9bOizy5npCq6xx/JyWcvSK7D3TFf2wFR2Mha9kbA=="></script>
@@ -50,14 +232,14 @@
  <body data-template-id="__page-root">
   <div class="app-shell grid-field">
    <header class="sticky top-0 z-50 border-b border-cyan-100/10 bg-[#06111f]/90 backdrop-blur-xl">
-    <nav class="site-width flex min-h-[72px] items-center justify-between gap-5" aria-label="Navegación principal"><a href="#inicio" class="flex items-center gap-3" aria-label="Inicio de Project Momentum"> <span class="flex h-9 w-9 items-center justify-center rounded-lg border border-cyan-200/20 bg-cyan-300/10 text-cyan-300"><i data-lucide="orbit" width="20"></i></span> <span data-template-id="brand-name" class="canva-text text-sm font-bold tracking-[.1em]"></span> </a>
-     <div class="desktop-nav flex items-center gap-6"><a data-template-id="nav-protocol" class="canva-link text-sm text-slate-300 hover:text-cyan-200" href="#protocolo"></a> <a data-template-id="nav-bonds" class="canva-link text-sm text-slate-300 hover:text-cyan-200" href="#bonos"></a> <a data-template-id="nav-dashboard" class="canva-link text-sm text-slate-300 hover:text-cyan-200" href="#panel"></a> <a data-template-id="nav-community" class="canva-link text-sm text-slate-300 hover:text-cyan-200" href="#comunidad"></a>
+    <nav class="site-width flex min-h-[72px] items-center justify-between gap-5" aria-label="Navegación principal"><a href="#inicio" class="flex items-center gap-3" aria-label="Inicio de Project Momentum"> <span class="flex h-9 w-9 items-center justify-center rounded-lg border border-cyan-200/20 bg-cyan-300/10 text-cyan-300"> <i data-lucide="orbit" width="20"></i> </span> <span data-template-id="brand-name" class="canva-text text-sm font-bold tracking-[.1em]">PROJECT MOMENTUM</span> </a>
+     <div class="desktop-nav flex items-center gap-6"><a data-template-id="nav-protocol" class="canva-link text-sm text-slate-300 hover:text-cyan-200" href="#protocolo">Protocol</a> <a data-template-id="nav-bonds" class="canva-link text-sm text-slate-300 hover:text-cyan-200" href="#bonos">Bonds</a> <a data-template-id="nav-dashboard" class="canva-link text-sm text-slate-300 hover:text-cyan-200" href="#panel">Dashboard</a> <a data-template-id="nav-community" class="canva-link text-sm text-slate-300 hover:text-cyan-200" href="#comunidad">Community</a>
      </div>
-     <div class="desktop-action"><button id="wallet-button" type="button" class="cta cta-primary"><span data-template-id="wallet-label" class="canva-text"></span></button> <span id="wallet-status" data-template-id="wallet-status" class="canva-tag hidden rounded-lg border border-teal-200/30 bg-teal-300/10 px-4 py-3 text-xs font-bold text-teal-100"></span>
-     </div><button id="menu-toggle" class="menu-toggle rounded-lg border border-cyan-100/20 p-2 text-cyan-100" type="button" aria-label="Abrir menú" aria-expanded="false"><i data-lucide="menu" width="21"></i></button>
+     <div class="desktop-action"><button id="wallet-button" type="button" class="cta cta-primary"> <span data-template-id="wallet-label" class="canva-text">CONNECT WALLET</span> </button> <span id="wallet-status" data-template-id="wallet-status" class="canva-tag hidden rounded-lg border border-teal-200/30 bg-teal-300/10 px-4 py-3 text-xs font-bold text-teal-100">WALLET CONNECTED</span>
+     </div><button id="menu-toggle" class="menu-toggle rounded-lg border border-cyan-100/20 p-2 text-cyan-100" type="button" aria-label="Abrir menú" aria-expanded="false"> <i data-lucide="menu" width="21"></i> </button>
     </nav>
     <div id="mobile-menu" class="mobile-menu border-t border-cyan-100/10 bg-[#081a2d]">
-     <nav class="site-width flex flex-col py-3" aria-label="Navegación móvil"><a data-template-id="mobile-protocol" class="canva-link border-b border-cyan-100/10 py-3 text-sm text-slate-200" href="#protocolo"></a> <a data-template-id="mobile-bonds" class="canva-link border-b border-cyan-100/10 py-3 text-sm text-slate-200" href="#bonos"></a> <a data-template-id="mobile-dashboard" class="canva-link border-b border-cyan-100/10 py-3 text-sm text-slate-200" href="#panel"></a> <a data-template-id="mobile-community" class="canva-link py-3 text-sm text-slate-200" href="#comunidad"></a>
+     <nav class="site-width flex flex-col py-3" aria-label="Navegación móvil"><a data-template-id="mobile-protocol" class="canva-link border-b border-cyan-100/10 py-3 text-sm text-slate-200" href="#protocolo">Protocol</a> <a data-template-id="mobile-bonds" class="canva-link border-b border-cyan-100/10 py-3 text-sm text-slate-200" href="#bonos">Bonds</a> <a data-template-id="mobile-dashboard" class="canva-link border-b border-cyan-100/10 py-3 text-sm text-slate-200" href="#panel">Dashboard</a> <a data-template-id="mobile-community" class="canva-link py-3 text-sm text-slate-200" href="#comunidad">Community</a>
      </nav>
     </div>
    </header>
@@ -66,118 +248,106 @@
      <div class="dot-wave"></div>
      <div class="site-width relative z-10 grid items-center gap-11 py-16 lg:grid-cols-[1.08fr_.92fr] lg:py-24">
       <div>
-       <p data-template-id="hero-eyebrow" class="canva-text eyebrow mb-5"></p>
-       <h1 data-template-id="hero-title" class="canva-text section-title max-w-2xl text-4xl font-bold sm:text-6xl"></h1>
-       <p data-template-id="hero-copy" class="canva-text mt-7 max-w-xl text-base leading-8 text-slate-300 sm:text-lg"></p>
-       <div class="mt-9 flex flex-col gap-3 sm:flex-row"><a class="cta cta-primary" href="#protocolo"><span data-template-id="hero-cta-primary" class="canva-text"></span><i data-lucide="arrow-down-right" width="17"></i></a> <a class="cta cta-secondary" href="#transparencia"><span data-template-id="hero-cta-secondary" class="canva-text"></span><i data-lucide="file-text" width="17"></i></a>
+       <p data-template-id="hero-eyebrow" class="canva-text eyebrow mb-5">TELOS EVM · DECENTRALIZED BONDING INFRASTRUCTURE</p>
+       <h1 data-template-id="hero-title" class="canva-text section-title max-w-2xl text-4xl font-bold sm:text-6xl">Building Momentum for the Next Generation of DeFi</h1>
+       <p data-template-id="hero-copy" class="canva-text mt-7 max-w-xl text-base leading-8 text-slate-300 sm:text-lg">Project Momentum is designed to create decentralized bonding infrastructure and encourage long-term participation within the Telos EVM ecosystem.</p>
+       <div class="mt-9 flex flex-col gap-3 sm:flex-row"><a class="cta cta-primary" href="#protocolo"> <span data-template-id="hero-cta-primary" class="canva-text">EXPLORE PROTOCOL</span> <i data-lucide="arrow-down-right" width="17"></i> </a> <a class="cta cta-secondary" href="#transparencia"> <span data-template-id="hero-cta-secondary" class="canva-text">READ DOCUMENTATION</span> <i data-lucide="file-text" width="17"></i> </a>
        </div>
-       <div class="mt-10 flex flex-wrap gap-x-7 gap-y-3 text-xs text-slate-400"><span><span class="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-teal-300"></span><span data-template-id="trust-one" class="canva-text"></span></span> <span><span class="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-cyan-300"></span><span data-template-id="trust-two" class="canva-text"></span></span>
+       <div class="mt-10 flex flex-wrap gap-x-7 gap-y-3 text-xs text-slate-400"><span><span class="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-teal-300"></span><span data-template-id="trust-one" class="canva-text">Built for long-term participation</span></span> <span><span class="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-cyan-300"></span><span data-template-id="trust-two" class="canva-text">Transparent by design</span></span>
        </div>
       </div>
       <aside class="network-stage" aria-label="Visualización de red descentralizada">
        <div class="orbit o1"></div>
-       <div class="orbit o2"></div><span class="beam" style="left:28%;top:34%;width:150px;transform:rotate(29deg)"></span><span class="beam" style="left:49%;top:49%;width:138px;transform:rotate(-34deg)"></span><span class="beam" style="left:34%;top:68%;width:130px;transform:rotate(-28deg)"></span> <span class="node" style="left:26%;top:29%"></span><span class="node" style="left:67%;top:27%;animation-delay:1s"></span><span class="node" style="left:76%;top:56%;animation-delay:2s"></span><span class="node" style="left:32%;top:72%;animation-delay:.5s"></span><span class="node core" style="left:calc(50% - 9px);top:calc(50% - 9px)"></span>
-       <div class="absolute bottom-5 left-5 right-5 flex items-center justify-between rounded-xl border border-cyan-100/10 bg-[#06111f]/75 px-4 py-3"><span data-template-id="network-label" class="canva-text font-mono text-[10px] tracking-[.14em] text-slate-400"></span> <span data-template-id="network-status" class="canva-text text-xs font-semibold text-cyan-200"></span>
+       <div class="orbit o2"></div><span class="beam" style="left:28%;top:34%;width:150px;transform:rotate(29deg)"></span> <span class="beam" style="left:49%;top:49%;width:138px;transform:rotate(-34deg)"></span> <span class="beam" style="left:34%;top:68%;width:130px;transform:rotate(-28deg)"></span> <span class="node" style="left:26%;top:29%"></span> <span class="node" style="left:67%;top:27%;animation-delay:1s"></span> <span class="node" style="left:76%;top:56%;animation-delay:2s"></span> <span class="node" style="left:32%;top:72%;animation-delay:.5s"></span> <span class="node core" style="left:calc(50% - 9px);top:calc(50% - 9px)"></span>
+       <div class="absolute bottom-5 left-5 right-5 flex items-center justify-between rounded-xl border border-cyan-100/10 bg-[#06111f]/75 px-4 py-3"><span data-template-id="network-label" class="canva-text font-mono text-[10px] tracking-[.14em] text-slate-400">DISTRIBUTED NETWORK</span> <span data-template-id="network-status" class="canva-text text-xs font-semibold text-cyan-200">Protocol layer</span>
        </div>
       </aside>
      </div>
     </section>
     <section id="protocolo" class="border-y border-cyan-100/10 bg-[#081a2d]/55 py-20">
      <div class="site-width">
-      <p data-template-id="protocol-eyebrow" class="canva-text eyebrow mb-4"></p>
-      <h2 data-template-id="protocol-title" class="canva-text section-title max-w-2xl text-3xl font-bold sm:text-4xl"></h2>
-      <p data-template-id="protocol-copy" class="canva-text mt-5 max-w-xl leading-7 text-slate-300"></p>
+      <p data-template-id="protocol-eyebrow" class="canva-text eyebrow mb-4">PROTOCOL OVERVIEW</p>
+      <h2 data-template-id="protocol-title" class="canva-text section-title max-w-2xl text-3xl font-bold sm:text-4xl">Built for sustainable ecosystem growth</h2>
+      <p data-template-id="protocol-copy" class="canva-text mt-5 max-w-xl leading-7 text-slate-300">A focused infrastructure layer for participation, clarity, and sustainable coordination across a growing on-chain ecosystem.</p>
       <div class="mt-11 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-       <article data-template-id="feature-one-card" class="canva-card panel card rounded-2xl p-6">
-        <i data-lucide="network" class="mb-8 text-cyan-300" width="24"></i>
-        <h3 data-template-id="feature-one-title" class="canva-text text-lg font-bold"></h3>
-        <p data-template-id="feature-one-copy" class="canva-text mt-3 text-sm leading-6 text-slate-400"></p>
+       <article data-template-id="feature-one-card" class="canva-card panel card rounded-2xl p-6"><i data-lucide="network" class="mb-8 text-cyan-300" width="24"></i>
+        <h3 data-template-id="feature-one-title" class="canva-text text-lg font-bold">Decentralized</h3>
+        <p data-template-id="feature-one-copy" class="canva-text mt-3 text-sm leading-6 text-slate-400">Participation and protocol logic are designed around transparent on-chain coordination.</p>
        </article>
-       <article data-template-id="feature-two-card" class="canva-card panel card rounded-2xl p-6">
-        <i data-lucide="scan-search" class="mb-8 text-cyan-300" width="24"></i>
-        <h3 data-template-id="feature-two-title" class="canva-text text-lg font-bold"></h3>
-        <p data-template-id="feature-two-copy" class="canva-text mt-3 text-sm leading-6 text-slate-400"></p>
+       <article data-template-id="feature-two-card" class="canva-card panel card rounded-2xl p-6"><i data-lucide="scan-search" class="mb-8 text-cyan-300" width="24"></i>
+        <h3 data-template-id="feature-two-title" class="canva-text text-lg font-bold">Transparent</h3>
+        <p data-template-id="feature-two-copy" class="canva-text mt-3 text-sm leading-6 text-slate-400">Activity and treasury information can be inspected through public blockchain records.</p>
        </article>
-       <article data-template-id="feature-three-card" class="canva-card panel card rounded-2xl p-6">
-        <i data-lucide="shield-check" class="mb-8 text-cyan-300" width="24"></i>
-        <h3 data-template-id="feature-three-title" class="canva-text text-lg font-bold"></h3>
-        <p data-template-id="feature-three-copy" class="canva-text mt-3 text-sm leading-6 text-slate-400"></p>
+       <article data-template-id="feature-three-card" class="canva-card panel card rounded-2xl p-6"><i data-lucide="shield-check" class="mb-8 text-cyan-300" width="24"></i>
+        <h3 data-template-id="feature-three-title" class="canva-text text-lg font-bold">Bond-based</h3>
+        <p data-template-id="feature-three-copy" class="canva-text mt-3 text-sm leading-6 text-slate-400">Structured bond phases encourage thoughtful, long-term ecosystem participation.</p>
        </article>
-       <article data-template-id="feature-four-card" class="canva-card panel card rounded-2xl p-6">
-        <i data-lucide="users-round" class="mb-8 text-cyan-300" width="24"></i>
-        <h3 data-template-id="feature-four-title" class="canva-text text-lg font-bold"></h3>
-        <p data-template-id="feature-four-copy" class="canva-text mt-3 text-sm leading-6 text-slate-400"></p>
+       <article data-template-id="feature-four-card" class="canva-card panel card rounded-2xl p-6"><i data-lucide="users-round" class="mb-8 text-cyan-300" width="24"></i>
+        <h3 data-template-id="feature-four-title" class="canva-text text-lg font-bold">Community-driven</h3>
+        <p data-template-id="feature-four-copy" class="canva-text mt-3 text-sm leading-6 text-slate-400">Open infrastructure with room for contributors, builders, and aligned communities.</p>
        </article>
       </div>
      </div>
     </section>
     <section id="bonos" class="py-20 sm:py-24">
      <div class="site-width">
-      <p data-template-id="bonds-eyebrow" class="canva-text eyebrow mb-4"></p>
-      <h2 data-template-id="bonds-title" class="canva-text section-title text-3xl font-bold sm:text-4xl"></h2>
+      <p data-template-id="bonds-eyebrow" class="canva-text eyebrow mb-4">BOND SYSTEM</p>
+      <h2 data-template-id="bonds-title" class="canva-text section-title text-3xl font-bold sm:text-4xl">A phased path to participation</h2>
       <div class="mt-11 grid gap-5 lg:grid-cols-3">
-       <article data-template-id="bond-seed-card" class="canva-card panel card rounded-2xl p-7">
-        <span class="font-mono text-cyan-300">01 / SEED</span>
-        <h3 data-template-id="bond-seed-title" class="canva-text mt-9 text-3xl font-bold"></h3>
-        <p data-template-id="bond-seed-copy" class="canva-text mt-3 text-sm text-slate-400"></p>
+       <article data-template-id="bond-seed-card" class="canva-card panel card rounded-2xl p-7"><span class="font-mono text-cyan-300">01 / SEED</span>
+        <h3 data-template-id="bond-seed-title" class="canva-text mt-9 text-3xl font-bold">Seed</h3>
+        <p data-template-id="bond-seed-copy" class="canva-text mt-3 text-sm text-slate-400">Early participation · Illustrative phase</p>
        </article>
-       <article data-template-id="bond-growth-card" class="canva-card card rounded-2xl border border-cyan-300/35 bg-[#0d2b40] p-7">
-        <span class="font-mono text-cyan-200">02 / GROWTH</span>
-        <h3 data-template-id="bond-growth-title" class="canva-text mt-9 text-3xl font-bold"></h3>
-        <p data-template-id="bond-growth-copy" class="canva-text mt-3 text-sm text-slate-300"></p>
+       <article data-template-id="bond-growth-card" class="canva-card card rounded-2xl border border-cyan-300/35 bg-[#0d2b40] p-7"><span class="font-mono text-cyan-200">02 / GROWTH</span>
+        <h3 data-template-id="bond-growth-title" class="canva-text mt-9 text-3xl font-bold">Growth</h3>
+        <p data-template-id="bond-growth-copy" class="canva-text mt-3 text-sm text-slate-300">Expanded participation · Illustrative phase</p>
        </article>
-       <article data-template-id="bond-expansion-card" class="canva-card panel card rounded-2xl p-7">
-        <span class="font-mono text-teal-300">03 / EXPANSION</span>
-        <h3 data-template-id="bond-expansion-title" class="canva-text mt-9 text-3xl font-bold"></h3>
-        <p data-template-id="bond-expansion-copy" class="canva-text mt-3 text-sm text-slate-400"></p>
+       <article data-template-id="bond-expansion-card" class="canva-card panel card rounded-2xl p-7"><span class="font-mono text-teal-300">03 / EXPANSION</span>
+        <h3 data-template-id="bond-expansion-title" class="canva-text mt-9 text-3xl font-bold">Expansion</h3>
+        <p data-template-id="bond-expansion-copy" class="canva-text mt-3 text-sm text-slate-400">Advanced participation · Illustrative phase</p>
        </article>
       </div>
      </div>
     </section>
     <section id="panel" class="border-y border-cyan-100/10 bg-[#081a2d]/55 py-20">
      <div class="site-width">
-      <p data-template-id="dashboard-eyebrow" class="canva-text eyebrow mb-4"></p>
-      <h2 data-template-id="dashboard-title" class="canva-text section-title text-3xl font-bold sm:text-4xl"></h2>
-      <div data-template-id="dashboard-frame" class="canva-panel mt-10 overflow-hidden rounded-2xl border border-cyan-100/15">
-       <div class="flex items-center justify-between border-b border-cyan-100/10 px-6 py-4">
-        <span data-template-id="dashboard-label" class="canva-text font-bold"></span><span data-template-id="dashboard-badge" class="canva-tag rounded-full bg-cyan-300/10 px-3 py-1 font-mono text-[10px] text-cyan-200"></span>
+      <p data-template-id="dashboard-eyebrow" class="canva-text eyebrow mb-4">DASHBOARD PREVIEW</p>
+      <h2 data-template-id="dashboard-title" class="canva-text section-title text-3xl font-bold sm:text-4xl">Protocol visibility, without the noise</h2>
+      <div data-template-id="dashboard-frame" class="canva-panel mt-10 overflow-hidden rounded-2xl border border-cyan-100/15 bg-[#081a2d]">
+       <div class="flex items-center justify-between border-b border-cyan-100/10 px-6 py-4"><span data-template-id="dashboard-label" class="canva-text font-bold">Momentum Dashboard</span> <span data-template-id="dashboard-badge" class="canva-tag rounded-full bg-cyan-300/10 px-3 py-1 font-mono text-[10px] text-cyan-200">ILLUSTRATIVE PREVIEW</span>
        </div>
        <div class="grid gap-4 p-4 sm:p-6 lg:grid-cols-3">
         <div class="space-y-4 lg:col-span-2">
          <div class="grid gap-4 sm:grid-cols-3">
           <div class="rounded-xl border border-cyan-100/10 bg-[#06111f]/65 p-4">
-           <p data-template-id="metric-one-label" class="canva-text text-xs text-slate-400"></p>
-           <p data-template-id="metric-one-value" class="canva-text mt-3 text-xl font-bold"></p>
+           <p data-template-id="metric-one-label" class="canva-text text-xs text-slate-400">Treasury</p>
+           <p data-template-id="metric-one-value" class="canva-text mt-3 text-xl font-bold">— TLOS</p>
           </div>
           <div class="rounded-xl border border-cyan-100/10 bg-[#06111f]/65 p-4">
-           <p data-template-id="metric-two-label" class="canva-text text-xs text-slate-400"></p>
-           <p data-template-id="metric-two-value" class="canva-text mt-3 text-xl font-bold"></p>
+           <p data-template-id="metric-two-label" class="canva-text text-xs text-slate-400">Active Bonds</p>
+           <p data-template-id="metric-two-value" class="canva-text mt-3 text-xl font-bold">—</p>
           </div>
           <div class="rounded-xl border border-cyan-100/10 bg-[#06111f]/65 p-4">
-           <p data-template-id="metric-three-label" class="canva-text text-xs text-slate-400"></p>
-           <p data-template-id="metric-three-value" class="canva-text mt-3 text-xl font-bold"></p>
+           <p data-template-id="metric-three-label" class="canva-text text-xs text-slate-400">Maturity</p>
+           <p data-template-id="metric-three-value" class="canva-text mt-3 text-xl font-bold">— days</p>
           </div>
          </div>
          <div class="rounded-xl border border-cyan-100/10 bg-[#06111f]/65 p-5">
-          <p data-template-id="chart-title" class="canva-text font-bold"></p>
+          <p data-template-id="chart-title" class="canva-text font-bold">Treasury Activity</p>
           <div class="chart relative mt-5 overflow-hidden">
-           <svg class="absolute inset-0 h-full w-full" viewbox="0 0 600 160" preserveaspectratio="none" aria-label="Gráfico ilustrativo">
-            <path d="M0 132 L60 119 L120 126 L180 98 L240 110 L300 67 L360 86 L420 58 L480 70 L540 31 L600 48" fill="none" stroke="#22d3ee" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+           <svg class="absolute inset-0 h-full w-full" viewbox="0 0 600 160" preserveaspectratio="none" aria-label="Gráfico ilustrativo"><path d="M0 132 L60 119 L120 126 L180 98 L240 110 L300 67 L360 86 L420 58 L480 70 L540 31 L600 48" fill="none" stroke="#22d3ee" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
            </svg>
           </div>
          </div>
         </div>
         <aside class="rounded-xl border border-cyan-100/10 bg-[#06111f]/65 p-5">
-         <h3 data-template-id="activity-title" class="canva-text font-bold"></h3>
+         <h3 data-template-id="activity-title" class="canva-text font-bold">Protocol Activity</h3>
          <div class="mt-5 space-y-4 text-sm">
-          <div class="flex justify-between border-b border-cyan-100/10 pb-3">
-           <span data-template-id="activity-one" class="canva-text text-slate-400"></span><span class="text-cyan-200">Pending</span>
+          <div class="flex justify-between border-b border-cyan-100/10 pb-3"><span data-template-id="activity-one" class="canva-text text-slate-400">Latest bond event</span> <span class="text-cyan-200">Pending</span>
           </div>
-          <div class="flex justify-between border-b border-cyan-100/10 pb-3">
-           <span data-template-id="activity-two" class="canva-text text-slate-400"></span><span class="text-cyan-200">Visible</span>
+          <div class="flex justify-between border-b border-cyan-100/10 pb-3"><span data-template-id="activity-two" class="canva-text text-slate-400">Treasury status</span> <span class="text-cyan-200">Visible</span>
           </div>
-          <div class="flex justify-between">
-           <span data-template-id="activity-three" class="canva-text text-slate-400"></span><span class="text-cyan-200">Telos EVM</span>
+          <div class="flex justify-between"><span data-template-id="activity-three" class="canva-text text-slate-400">Network</span> <span class="text-cyan-200">Telos EVM</span>
           </div>
          </div>
         </aside>
@@ -188,31 +358,30 @@
     <section id="transparencia" class="py-20">
      <div class="site-width grid gap-8 lg:grid-cols-[1.1fr_.9fr] lg:items-center">
       <div>
-       <p data-template-id="transparency-eyebrow" class="canva-text eyebrow mb-4"></p>
-       <h2 data-template-id="transparency-title" class="canva-text section-title text-3xl font-bold sm:text-4xl"></h2>
-       <p data-template-id="transparency-copy" class="canva-text mt-6 max-w-xl leading-7 text-slate-300"></p><a class="cta cta-primary mt-8" href="https://github.com" target="_blank" rel="noopener noreferrer"><span data-template-id="transparency-button" class="canva-text"></span><i data-lucide="external-link" width="16"></i></a>
+       <p data-template-id="transparency-eyebrow" class="canva-text eyebrow mb-4">TRANSPARENCY &amp; TREASURY</p>
+       <h2 data-template-id="transparency-title" class="canva-text section-title text-3xl font-bold sm:text-4xl">Infrastructure you can inspect</h2>
+       <p data-template-id="transparency-copy" class="canva-text mt-6 max-w-xl leading-7 text-slate-300">Project Momentum is designed around public verification. Users can inspect protocol activity and treasury-related information through on-chain records as components become available.</p><a class="cta cta-primary mt-8" href="https://github.com" target="_blank" rel="noopener noreferrer"> <span data-template-id="transparency-button" class="canva-text">VIEW ON-CHAIN DATA</span> <i data-lucide="external-link" width="16"></i> </a>
       </div>
-      <aside data-template-id="transparency-panel" class="canva-panel panel rounded-2xl p-7">
-       <i data-lucide="shield-check" class="text-cyan-300" width="28"></i>
-       <h3 data-template-id="transparency-panel-title" class="canva-text mt-5 text-xl font-bold"></h3>
-       <p data-template-id="transparency-panel-copy" class="canva-text mt-3 leading-7 text-slate-400"></p>
+      <aside data-template-id="transparency-panel" class="canva-panel panel rounded-2xl p-7"><i data-lucide="shield-check" class="text-cyan-300" width="28"></i>
+       <h3 data-template-id="transparency-panel-title" class="canva-text mt-5 text-xl font-bold">Clear by default</h3>
+       <p data-template-id="transparency-panel-copy" class="canva-text mt-3 leading-7 text-slate-400">No invented metrics. No hidden dashboards. When live data exists, it should be traceable to the chain.</p>
       </aside>
      </div>
     </section>
     <section id="comunidad" class="border-t border-cyan-100/10 bg-[#081a2d]/55 py-20">
      <div class="site-width">
-      <p data-template-id="community-eyebrow" class="canva-text eyebrow mb-4"></p>
-      <h2 data-template-id="community-title" class="canva-text section-title text-3xl font-bold sm:text-4xl"></h2>
-      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"><a data-template-id="social-x" class="canva-card panel card rounded-xl p-5" href="https://x.com" target="_blank" rel="noopener noreferrer"><i data-lucide="twitter" class="text-cyan-300" width="21"></i><span data-template-id="social-x-label" class="canva-text mt-6 block font-bold"></span></a> <a data-template-id="social-discord" class="canva-card panel card rounded-xl p-5" href="https://discord.com" target="_blank" rel="noopener noreferrer"><i data-lucide="message-circle" class="text-cyan-300" width="21"></i><span data-template-id="social-discord-label" class="canva-text mt-6 block font-bold"></span></a> <a data-template-id="social-telegram" class="canva-card panel card rounded-xl p-5" href="https://telegram.org" target="_blank" rel="noopener noreferrer"><i data-lucide="send" class="text-cyan-300" width="21"></i><span data-template-id="social-telegram-label" class="canva-text mt-6 block font-bold"></span></a> <a data-template-id="social-github" class="canva-card panel card rounded-xl p-5" href="https://github.com" target="_blank" rel="noopener noreferrer"><i data-lucide="github" class="text-cyan-300" width="21"></i><span data-template-id="social-github-label" class="canva-text mt-6 block font-bold"></span></a>
+      <p data-template-id="community-eyebrow" class="canva-text eyebrow mb-4">COMMUNITY</p>
+      <h2 data-template-id="community-title" class="canva-text section-title text-3xl font-bold sm:text-4xl">Build the future together</h2>
+      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"><a data-template-id="social-x" class="canva-card panel card rounded-xl p-5" href="https://x.com" target="_blank" rel="noopener noreferrer"> <i data-lucide="twitter" class="text-cyan-300" width="21"></i> <span data-template-id="social-x-label" class="canva-text mt-6 block font-bold">X / Twitter</span> </a> <a data-template-id="social-discord" class="canva-card panel card rounded-xl p-5" href="https://discord.com" target="_blank" rel="noopener noreferrer"> <i data-lucide="message-circle" class="text-cyan-300" width="21"></i> <span data-template-id="social-discord-label" class="canva-text mt-6 block font-bold">Discord</span> </a> <a data-template-id="social-telegram" class="canva-card panel card rounded-xl p-5" href="https://telegram.org" target="_blank" rel="noopener noreferrer"> <i data-lucide="send" class="text-cyan-300" width="21"></i> <span data-template-id="social-telegram-label" class="canva-text mt-6 block font-bold">Telegram</span> </a> <a data-template-id="social-github" class="canva-card panel card rounded-xl p-5" href="https://github.com" target="_blank" rel="noopener noreferrer"> <i data-lucide="github" class="text-cyan-300" width="21"></i> <span data-template-id="social-github-label" class="canva-text mt-6 block font-bold">GitHub</span> </a>
       </div>
      </div>
     </section>
    </main>
    <footer class="border-t border-cyan-100/10 bg-[#040b14] py-11">
     <div class="site-width">
-     <p data-template-id="footer-name" class="canva-text font-bold tracking-[.1em]"></p>
-     <p data-template-id="risk-copy" class="canva-text mt-7 max-w-3xl rounded-xl border border-amber-100/10 bg-amber-100/[.035] p-5 text-xs leading-6 text-slate-400"></p>
-     <p data-template-id="footer-copyright" class="canva-text mt-8 text-xs text-slate-600"></p>
+     <p data-template-id="footer-name" class="canva-text font-bold tracking-[.1em]">PROJECT MOMENTUM</p>
+     <p data-template-id="risk-copy" class="canva-text mt-7 max-w-3xl rounded-xl border border-amber-100/10 bg-amber-100/[.035] p-5 text-xs leading-6 text-slate-400">Cryptocurrency and DeFi participation involve substantial risk, including potential loss of value. Nothing on this website is financial, legal, or investment advice. Project Momentum does not guarantee profits, returns, liquidity, or token price appreciation.</p>
+     <p data-template-id="footer-copyright" class="canva-text mt-8 text-xs text-slate-600">© 2026 Project Momentum. Independent decentralized infrastructure concept.</p>
     </div>
    </footer>
   </div>
@@ -220,20 +389,29 @@
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       lucide.createIcons();
+
       const toggle = document.getElementById("menu-toggle");
       const menu = document.getElementById("mobile-menu");
+      const walletButton = document.getElementById("wallet-button");
+      const walletStatus = document.getElementById("wallet-status");
+
       toggle.addEventListener("click", () => {
         const open = menu.classList.toggle("open");
         toggle.setAttribute("aria-expanded", String(open));
         toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
       });
-      document.querySelectorAll("#mobile-menu a").forEach(link => link.addEventListener("click", () => {
-        menu.classList.remove("open");
-        toggle.setAttribute("aria-expanded", "false");
-      }));
-      document.getElementById("wallet-button").addEventListener("click", () => {
-        document.getElementById("wallet-button").classList.add("hidden");
-        document.getElementById("wallet-status").classList.remove("hidden");
+
+      document.querySelectorAll("#mobile-menu a").forEach((link) => {
+        link.addEventListener("click", () => {
+          menu.classList.remove("open");
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute("aria-label", "Abrir menú");
+        });
+      });
+
+      walletButton.addEventListener("click", () => {
+        walletButton.classList.add("hidden");
+        walletStatus.classList.remove("hidden");
       });
     });
   </script>
