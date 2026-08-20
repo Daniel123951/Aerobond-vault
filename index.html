@@ -9,14 +9,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
   <style>
     :root {
-      --midnight: #07111f;
-      --navy: #0d1b2a;
-      --panel: #102235;
-      --cyan: #19d3f3;
-      --ice: #8be9ff;
-      --teal: #14b8a6;
-      --text: #f5f9fc;
-      --muted: #b8c4d0;
+      --midnight: #10263a;
+      --navy: #18334a;
+      --panel: #1d4059;
+      --cyan: #35dcf5;
+      --ice: #b8f3ff;
+      --teal: #35d5c1;
+      --text: #ffffff;
+      --muted: #d7e5ee;
       --line: rgba(139, 233, 255, 0.15);
     }
 
@@ -85,7 +85,7 @@
 
     .panel {
       border: 1px solid var(--line);
-      background: rgba(13, 27, 42, 0.82);
+      background: rgba(24, 51, 74, 0.92);
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
     }
 
@@ -351,28 +351,22 @@
  <body data-template-id="__page-root">
   <div class="site-shell grid-atmosphere">
    <header class="sticky top-0 z-50 border-b border-cyan-100/10 bg-[#07111F]/90 backdrop-blur-xl">
-    <nav class="site-width flex min-h-[76px] items-center justify-between gap-5" aria-label="Main navigation">
-     <a href="#home" class="flex items-center gap-3" aria-label="Project Momentum home"> <span class="flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-200/30 bg-cyan-300/5 text-cyan-300">
-       <svg width="24" height="24" viewbox="0 0 28 28" fill="none" aria-hidden="true">
-        <path d="M5 8.5L14 3l9 5.5v11L14 25l-9-5.5v-11Z" stroke="currentColor" stroke-width="1.6" /> <path d="M14 3v22M5 8.5l9 5 9-5M5 19.5l9-6 9 6" stroke="currentColor" stroke-width="1.6" /> <circle cx="14" cy="13.5" r="2.2" fill="currentColor" />
+    <nav class="site-width flex min-h-[76px] items-center justify-between gap-5" aria-label="Main navigation"><a href="#home" class="flex items-center gap-3" aria-label="Project Momentum home"> <span class="flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-200/30 bg-cyan-300/5 text-cyan-300">
+       <svg width="24" height="24" viewbox="0 0 28 28" fill="none" aria-hidden="true"><path d="M5 8.5L14 3l9 5.5v11L14 25l-9-5.5v-11Z" stroke="currentColor" stroke-width="1.6" /> <path d="M14 3v22M5 8.5l9 5 9-5M5 19.5l9-6 9 6" stroke="currentColor" stroke-width="1.6" /> <circle cx="14" cy="13.5" r="2.2" fill="currentColor" />
        </svg></span> <span data-template-id="nav-project-name" class="canva-text text-sm font-bold tracking-[0.08em] text-slate-50"></span> </a>
-     <div class="desktop-nav flex items-center gap-7">
-      <a data-template-id="nav-home" class="canva-link nav-link" href="#home"></a> <a data-template-id="nav-protocol" class="canva-link nav-link" href="#protocol"></a> <a data-template-id="nav-bonds" class="canva-link nav-link" href="#bonds"></a> <a data-template-id="nav-how" class="canva-link nav-link" href="#how-it-works"></a> <a data-template-id="nav-ecosystem" class="canva-link nav-link" href="#ecosystem"></a> <a data-template-id="nav-docs" class="canva-link nav-link" href="#transparency"></a>
+     <div class="desktop-nav flex items-center gap-7"><a data-template-id="nav-home" class="canva-link nav-link" href="#home"></a> <a data-template-id="nav-protocol" class="canva-link nav-link" href="#protocol"></a> <a data-template-id="nav-bonds" class="canva-link nav-link" href="#bonds"></a> <a data-template-id="nav-how" class="canva-link nav-link" href="#how-it-works"></a> <a data-template-id="nav-ecosystem" class="canva-link nav-link" href="#ecosystem"></a> <a data-template-id="nav-docs" class="canva-link nav-link" href="#transparency"></a>
      </div>
-     <div class="desktop-wallet">
-      <button id="wallet-button" type="button" class="primary-button !min-h-[42px] !px-4"> <span data-template-id="wallet-connect-label" class="canva-text"></span> </button> <span id="wallet-connected" data-template-id="wallet-connected" class="canva-tag hidden rounded-lg border border-teal-300/35 bg-teal-300/10 px-4 py-3 text-xs font-bold text-teal-200"></span>
+     <div class="desktop-wallet"><button id="wallet-button" type="button" class="primary-button !min-h-[42px] !px-4"> <span data-template-id="wallet-connect-label" class="canva-text"></span> </button> <span id="wallet-connected" data-template-id="wallet-connected" class="canva-tag hidden rounded-lg border border-teal-300/35 bg-teal-300/10 px-4 py-3 text-xs font-bold text-teal-200"></span>
      </div><button id="menu-toggle" class="mobile-toggle items-center justify-center rounded-lg border border-cyan-100/20 p-2 text-cyan-100" type="button" aria-label="Open menu" aria-expanded="false"> <i data-lucide="menu" width="22" height="22"></i> </button>
     </nav>
     <div id="mobile-menu" class="mobile-menu border-t border-cyan-100/10 bg-[#0D1B2A]">
-     <div class="site-width flex flex-col py-4">
-      <a data-template-id="mobile-nav-home" class="canva-link border-b border-cyan-100/10 py-3 text-sm text-slate-200" href="#home"></a> <a data-template-id="mobile-nav-protocol" class="canva-link border-b border-cyan-100/10 py-3 text-sm text-slate-200" href="#protocol"></a> <a data-template-id="mobile-nav-bonds" class="canva-link border-b border-cyan-100/10 py-3 text-sm text-slate-200" href="#bonds"></a> <a data-template-id="mobile-nav-how" class="canva-link border-b border-cyan-100/10 py-3 text-sm text-slate-200" href="#how-it-works"></a> <a data-template-id="mobile-nav-ecosystem" class="canva-link border-b border-cyan-100/10 py-3 text-sm text-slate-200" href="#ecosystem"></a> <a data-template-id="mobile-nav-docs" class="canva-link py-3 text-sm text-slate-200" href="#transparency"></a> <button id="mobile-wallet-button" type="button" class="primary-button mt-3 w-full"> <span data-template-id="mobile-wallet-connect-label" class="canva-text"></span> </button> <span id="mobile-wallet-connected" data-template-id="mobile-wallet-connected" class="canva-tag mt-3 hidden rounded-lg border border-teal-300/35 bg-teal-300/10 px-4 py-3 text-center text-xs font-bold text-teal-200"></span>
+     <div class="site-width flex flex-col py-4"><a data-template-id="mobile-nav-home" class="canva-link border-b border-cyan-100/10 py-3 text-sm text-slate-200" href="#home"></a> <a data-template-id="mobile-nav-protocol" class="canva-link border-b border-cyan-100/10 py-3 text-sm text-slate-200" href="#protocol"></a> <a data-template-id="mobile-nav-bonds" class="canva-link border-b border-cyan-100/10 py-3 text-sm text-slate-200" href="#bonds"></a> <a data-template-id="mobile-nav-how" class="canva-link border-b border-cyan-100/10 py-3 text-sm text-slate-200" href="#how-it-works"></a> <a data-template-id="mobile-nav-ecosystem" class="canva-link border-b border-cyan-100/10 py-3 text-sm text-slate-200" href="#ecosystem"></a> <a data-template-id="mobile-nav-docs" class="canva-link py-3 text-sm text-slate-200" href="#transparency"></a> <button id="mobile-wallet-button" type="button" class="primary-button mt-3 w-full"> <span data-template-id="mobile-wallet-connect-label" class="canva-text"></span> </button> <span id="mobile-wallet-connected" data-template-id="mobile-wallet-connected" class="canva-tag mt-3 hidden rounded-lg border border-teal-300/35 bg-teal-300/10 px-4 py-3 text-center text-xs font-bold text-teal-200"></span>
      </div>
     </div>
    </header>
    <main>
     <section id="home" class="hero-section flex items-center py-16 sm:py-24">
-     <video class="hero-video" autoplay muted loop playsinline aria-hidden="true">
-      <source src="videotelos.mp4" type="video/mp4">
+     <video class="hero-video" autoplay muted loop playsinline aria-hidden="true"><source src="videotelos.mp4" type="video/mp4">
      </video>
      <div class="hero-overlay"></div>
      <div class="hero-grid"></div>
@@ -381,19 +375,16 @@
        <p data-template-id="hero-eyebrow" class="canva-text eyebrow mb-5"></p>
        <h1 data-template-id="hero-title" class="canva-text section-title max-w-3xl text-4xl font-bold text-slate-50 sm:text-5xl lg:text-6xl"></h1>
        <p data-template-id="hero-copy" class="canva-text mt-7 max-w-xl text-base leading-8 text-slate-300 sm:text-lg"></p>
-       <div class="mt-9 flex flex-col gap-3 sm:flex-row">
-        <a class="primary-button" href="#protocol"> <span data-template-id="hero-primary-label" class="canva-text"></span> <i data-lucide="arrow-down-right" width="18" height="18"></i> </a> <a class="secondary-button" href="#transparency"> <span data-template-id="hero-secondary-label" class="canva-text"></span> <i data-lucide="file-text" width="17" height="17"></i> </a>
+       <div class="mt-9 flex flex-col gap-3 sm:flex-row"><a class="primary-button" href="#protocol"> <span data-template-id="hero-primary-label" class="canva-text"></span> <i data-lucide="arrow-down-right" width="18" height="18"></i> </a> <a class="secondary-button" href="#transparency"> <span data-template-id="hero-secondary-label" class="canva-text"></span> <i data-lucide="file-text" width="17" height="17"></i> </a>
        </div>
-       <div class="mt-11 flex flex-wrap items-center gap-x-7 gap-y-3 text-xs text-slate-400">
-        <span class="inline-flex items-center gap-2"> <span class="h-1.5 w-1.5 rounded-full bg-teal-400"></span> <span data-template-id="hero-trust-one" class="canva-text"></span> </span> <span class="inline-flex items-center gap-2"> <span class="h-1.5 w-1.5 rounded-full bg-cyan-300"></span> <span data-template-id="hero-trust-two" class="canva-text"></span> </span>
+       <div class="mt-11 flex flex-wrap items-center gap-x-7 gap-y-3 text-xs text-slate-400"><span class="inline-flex items-center gap-2"> <span class="h-1.5 w-1.5 rounded-full bg-teal-400"></span> <span data-template-id="hero-trust-one" class="canva-text"></span> </span> <span class="inline-flex items-center gap-2"> <span class="h-1.5 w-1.5 rounded-full bg-cyan-300"></span> <span data-template-id="hero-trust-two" class="canva-text"></span> </span>
        </div>
       </div>
       <aside class="network-stage" aria-label="Decentralized network visualization">
        <div class="network-grid"></div>
        <div class="orbit orbit-a"></div>
        <div class="orbit orbit-b"></div><span class="network-line" style="width:155px;left:28%;top:35%;transform:rotate(28deg)"></span> <span class="network-line" style="width:142px;left:47%;top:48%;transform:rotate(-34deg)"></span> <span class="network-line" style="width:140px;left:34%;top:68%;transform:rotate(-28deg)"></span> <span class="network-line" style="width:118px;left:47%;top:51%;transform:rotate(120deg)"></span> <span class="node" style="left:26%;top:31%;animation-delay:.3s"></span> <span class="node" style="left:67%;top:28%;animation-delay:1.1s"></span> <span class="node" style="left:76%;top:57%;animation-delay:1.8s"></span> <span class="node" style="left:32%;top:72%;animation-delay:2.4s"></span> <span class="node" style="left:59%;top:75%;animation-delay:.8s"></span> <span class="node core" style="left:calc(50% - 10px);top:calc(50% - 10px)"></span>
-       <div class="absolute bottom-5 left-5 right-5 flex items-center justify-between rounded-xl border border-cyan-100/10 bg-[#07111F]/70 px-4 py-3 backdrop-blur-md">
-        <span data-template-id="network-label" class="canva-text text-[10px] font-bold tracking-[0.15em] text-slate-400"></span> <span class="inline-flex items-center gap-2 text-xs text-cyan-200"> <span class="h-1.5 w-1.5 rounded-full bg-cyan-300"></span> <span data-template-id="network-status" class="canva-text"></span> </span>
+       <div class="absolute bottom-5 left-5 right-5 flex items-center justify-between rounded-xl border border-cyan-100/10 bg-[#07111F]/70 px-4 py-3 backdrop-blur-md"><span data-template-id="network-label" class="canva-text text-[10px] font-bold tracking-[0.15em] text-slate-400"></span> <span class="inline-flex items-center gap-2 text-xs text-cyan-200"> <span class="h-1.5 w-1.5 rounded-full bg-cyan-300"></span> <span data-template-id="network-status" class="canva-text"></span> </span>
        </div>
       </aside>
      </div>
@@ -406,23 +397,19 @@
        <p data-template-id="protocol-copy" class="canva-text section-copy mt-5 max-w-xl"></p>
       </div>
       <div class="mt-11 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-       <article data-template-id="feature-decentralized-card" class="canva-card panel card-hover rounded-2xl p-6">
-        <i data-lucide="network" class="mb-8 text-cyan-300" width="25" height="25"></i>
+       <article data-template-id="feature-decentralized-card" class="canva-card panel card-hover rounded-2xl p-6"><i data-lucide="network" class="mb-8 text-cyan-300" width="25" height="25"></i>
         <h3 data-template-id="feature-decentralized-title" class="canva-text text-lg font-bold text-slate-50"></h3>
         <p data-template-id="feature-decentralized-copy" class="canva-text mt-3 text-sm leading-6 text-slate-400"></p>
        </article>
-       <article data-template-id="feature-transparent-card" class="canva-card panel card-hover rounded-2xl p-6">
-        <i data-lucide="scan-search" class="mb-8 text-cyan-300" width="25" height="25"></i>
+       <article data-template-id="feature-transparent-card" class="canva-card panel card-hover rounded-2xl p-6"><i data-lucide="scan-search" class="mb-8 text-cyan-300" width="25" height="25"></i>
         <h3 data-template-id="feature-transparent-title" class="canva-text text-lg font-bold text-slate-50"></h3>
         <p data-template-id="feature-transparent-copy" class="canva-text mt-3 text-sm leading-6 text-slate-400"></p>
        </article>
-       <article data-template-id="feature-bond-card" class="canva-card panel card-hover rounded-2xl p-6">
-        <i data-lucide="shield-check" class="mb-8 text-cyan-300" width="25" height="25"></i>
+       <article data-template-id="feature-bond-card" class="canva-card panel card-hover rounded-2xl p-6"><i data-lucide="shield-check" class="mb-8 text-cyan-300" width="25" height="25"></i>
         <h3 data-template-id="feature-bond-title" class="canva-text text-lg font-bold text-slate-50"></h3>
         <p data-template-id="feature-bond-copy" class="canva-text mt-3 text-sm leading-6 text-slate-400"></p>
        </article>
-       <article data-template-id="feature-community-card" class="canva-card panel card-hover rounded-2xl p-6">
-        <i data-lucide="users-round" class="mb-8 text-cyan-300" width="25" height="25"></i>
+       <article data-template-id="feature-community-card" class="canva-card panel card-hover rounded-2xl p-6"><i data-lucide="users-round" class="mb-8 text-cyan-300" width="25" height="25"></i>
         <h3 data-template-id="feature-community-title" class="canva-text text-lg font-bold text-slate-50"></h3>
         <p data-template-id="feature-community-copy" class="canva-text mt-3 text-sm leading-6 text-slate-400"></p>
        </article>
@@ -440,24 +427,21 @@
       </div>
       <div class="mt-12 grid gap-5 lg:grid-cols-3">
        <article data-template-id="bond-seed-card" class="canva-card panel card-hover rounded-2xl p-7">
-        <div class="mb-9 flex items-center justify-between">
-         <span class="flex h-9 w-9 items-center justify-center rounded-full border border-cyan-200/25 bg-cyan-300/10 text-sm font-bold text-cyan-200">01</span> <i data-lucide="sprout" class="text-slate-500" width="20"></i>
+        <div class="mb-9 flex items-center justify-between"><span class="flex h-9 w-9 items-center justify-center rounded-full border border-cyan-200/25 bg-cyan-300/10 text-sm font-bold text-cyan-200">01</span> <i data-lucide="sprout" class="text-slate-500" width="20"></i>
         </div>
         <p data-template-id="bond-seed-label" class="canva-text eyebrow"></p>
         <p data-template-id="bond-seed-price" class="canva-text mt-4 text-4xl font-bold text-slate-50"></p>
         <p data-template-id="bond-seed-copy" class="canva-text mt-3 text-sm text-slate-400"></p>
        </article>
        <article data-template-id="bond-growth-card" class="canva-card card-hover rounded-2xl border border-cyan-300/35 bg-[#102B3B] p-7 shadow-[0_18px_50px_rgba(25,211,243,.09)]">
-        <div class="mb-9 flex items-center justify-between">
-         <span class="flex h-9 w-9 items-center justify-center rounded-full border border-cyan-200/45 bg-cyan-300/15 text-sm font-bold text-cyan-100">02</span> <i data-lucide="trending-up" class="text-cyan-300" width="20"></i>
+        <div class="mb-9 flex items-center justify-between"><span class="flex h-9 w-9 items-center justify-center rounded-full border border-cyan-200/45 bg-cyan-300/15 text-sm font-bold text-cyan-100">02</span> <i data-lucide="trending-up" class="text-cyan-300" width="20"></i>
         </div>
         <p data-template-id="bond-growth-label" class="canva-text eyebrow"></p>
         <p data-template-id="bond-growth-price" class="canva-text mt-4 text-4xl font-bold text-slate-50"></p>
         <p data-template-id="bond-growth-copy" class="canva-text mt-3 text-sm text-slate-300"></p>
        </article>
        <article data-template-id="bond-expansion-card" class="canva-card panel card-hover rounded-2xl p-7">
-        <div class="mb-9 flex items-center justify-between">
-         <span class="flex h-9 w-9 items-center justify-center rounded-full border border-teal-200/25 bg-teal-300/10 text-sm font-bold text-teal-200">03</span> <i data-lucide="waypoints" class="text-slate-500" width="20"></i>
+        <div class="mb-9 flex items-center justify-between"><span class="flex h-9 w-9 items-center justify-center rounded-full border border-teal-200/25 bg-teal-300/10 text-sm font-bold text-teal-200">03</span> <i data-lucide="waypoints" class="text-slate-500" width="20"></i>
         </div>
         <p data-template-id="bond-expansion-label" class="canva-text eyebrow"></p>
         <p data-template-id="bond-expansion-price" class="canva-text mt-4 text-4xl font-bold text-slate-50"></p>
@@ -473,23 +457,19 @@
        <h2 data-template-id="how-title" class="canva-text section-title text-3xl font-bold sm:text-4xl"></h2>
       </div>
       <div class="mt-12 grid gap-4 md:grid-cols-4">
-       <article class="rounded-2xl border border-cyan-100/10 bg-[#07111F] p-5">
-        <span class="mb-8 flex h-10 w-10 items-center justify-center rounded-full border border-cyan-300/40 bg-[#0D1B2A] font-mono text-xs text-cyan-200">01</span>
+       <article class="rounded-2xl border border-cyan-100/10 bg-[#07111F] p-5"><span class="mb-8 flex h-10 w-10 items-center justify-center rounded-full border border-cyan-300/40 bg-[#0D1B2A] font-mono text-xs text-cyan-200">01</span>
         <h3 data-template-id="step-one-title" class="canva-text text-base font-bold"></h3>
         <p data-template-id="step-one-copy" class="canva-text mt-2 text-sm leading-6 text-slate-400"></p>
        </article>
-       <article class="rounded-2xl border border-cyan-100/10 bg-[#07111F] p-5">
-        <span class="mb-8 flex h-10 w-10 items-center justify-center rounded-full border border-cyan-300/40 bg-[#0D1B2A] font-mono text-xs text-cyan-200">02</span>
+       <article class="rounded-2xl border border-cyan-100/10 bg-[#07111F] p-5"><span class="mb-8 flex h-10 w-10 items-center justify-center rounded-full border border-cyan-300/40 bg-[#0D1B2A] font-mono text-xs text-cyan-200">02</span>
         <h3 data-template-id="step-two-title" class="canva-text text-base font-bold"></h3>
         <p data-template-id="step-two-copy" class="canva-text mt-2 text-sm leading-6 text-slate-400"></p>
        </article>
-       <article class="rounded-2xl border border-cyan-100/10 bg-[#07111F] p-5">
-        <span class="mb-8 flex h-10 w-10 items-center justify-center rounded-full border border-cyan-300/40 bg-[#0D1B2A] font-mono text-xs text-cyan-200">03</span>
+       <article class="rounded-2xl border border-cyan-100/10 bg-[#07111F] p-5"><span class="mb-8 flex h-10 w-10 items-center justify-center rounded-full border border-cyan-300/40 bg-[#0D1B2A] font-mono text-xs text-cyan-200">03</span>
         <h3 data-template-id="step-three-title" class="canva-text text-base font-bold"></h3>
         <p data-template-id="step-three-copy" class="canva-text mt-2 text-sm leading-6 text-slate-400"></p>
        </article>
-       <article class="rounded-2xl border border-cyan-100/10 bg-[#07111F] p-5">
-        <span class="mb-8 flex h-10 w-10 items-center justify-center rounded-full border border-cyan-300/40 bg-[#0D1B2A] font-mono text-xs text-cyan-200">04</span>
+       <article class="rounded-2xl border border-cyan-100/10 bg-[#07111F] p-5"><span class="mb-8 flex h-10 w-10 items-center justify-center rounded-full border border-cyan-300/40 bg-[#0D1B2A] font-mono text-xs text-cyan-200">04</span>
         <h3 data-template-id="step-four-title" class="canva-text text-base font-bold"></h3>
         <p data-template-id="step-four-copy" class="canva-text mt-2 text-sm leading-6 text-slate-400"></p>
        </article>
@@ -505,8 +485,7 @@
       </div>
       <div data-template-id="dashboard-frame" class="canva-panel overflow-hidden rounded-2xl border border-cyan-100/15 bg-[#0D1B2A] shadow-[0_25px_80px_rgba(0,0,0,.25)]">
        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-cyan-100/10 px-5 py-4 sm:px-7">
-        <div class="flex items-center gap-3">
-         <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-300/10 text-cyan-300"><i data-lucide="layout-dashboard" width="16"></i></span> <span data-template-id="dashboard-label" class="canva-text text-sm font-bold text-slate-100"></span>
+        <div class="flex items-center gap-3"><span class="flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-300/10 text-cyan-300"><i data-lucide="layout-dashboard" width="16"></i></span> <span data-template-id="dashboard-label" class="canva-text text-sm font-bold text-slate-100"></span>
         </div><span data-template-id="dashboard-demo-label" class="canva-tag rounded-full border border-cyan-100/15 bg-cyan-300/5 px-3 py-1 text-[10px] font-bold tracking-[0.12em] text-cyan-200"></span>
        </div>
        <div class="grid gap-4 p-4 sm:p-6 lg:grid-cols-3">
@@ -537,8 +516,7 @@
           </div>
           <div class="chart-area">
            <div class="chart-grid"></div>
-           <svg class="chart-svg" viewbox="0 0 650 178" preserveaspectratio="none" aria-label="Illustrative activity chart">
-            <defs>
+           <svg class="chart-svg" viewbox="0 0 650 178" preserveaspectratio="none" aria-label="Illustrative activity chart"><defs>
              <lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
               <stop offset="0%" stop-color="#19D3F3" stop-opacity=".30" />
               <stop offset="100%" stop-color="#19D3F3" stop-opacity="0" />
@@ -555,24 +533,21 @@
           </div>
           <div class="mt-5 space-y-5">
            <div>
-            <div class="mb-2 flex justify-between text-xs">
-             <span data-template-id="level-seed-label" class="canva-text text-slate-400"></span> <span data-template-id="level-seed-value" class="canva-text text-slate-300"></span>
+            <div class="mb-2 flex justify-between text-xs"><span data-template-id="level-seed-label" class="canva-text text-slate-400"></span> <span data-template-id="level-seed-value" class="canva-text text-slate-300"></span>
             </div>
             <div class="metric-bar">
              <div class="metric-fill" style="width:30%"></div>
             </div>
            </div>
            <div>
-            <div class="mb-2 flex justify-between text-xs">
-             <span data-template-id="level-growth-label" class="canva-text text-slate-400"></span> <span data-template-id="level-growth-value" class="canva-text text-slate-300"></span>
+            <div class="mb-2 flex justify-between text-xs"><span data-template-id="level-growth-label" class="canva-text text-slate-400"></span> <span data-template-id="level-growth-value" class="canva-text text-slate-300"></span>
             </div>
             <div class="metric-bar">
              <div class="metric-fill" style="width:61%"></div>
             </div>
            </div>
            <div>
-            <div class="mb-2 flex justify-between text-xs">
-             <span data-template-id="level-expansion-label" class="canva-text text-slate-400"></span> <span data-template-id="level-expansion-value" class="canva-text text-slate-300"></span>
+            <div class="mb-2 flex justify-between text-xs"><span data-template-id="level-expansion-label" class="canva-text text-slate-400"></span> <span data-template-id="level-expansion-value" class="canva-text text-slate-300"></span>
             </div>
             <div class="metric-bar">
              <div class="metric-fill" style="width:84%"></div>
@@ -585,14 +560,11 @@
            <h3 data-template-id="activity-title" class="canva-text text-sm font-bold"></h3><i data-lucide="activity" class="text-teal-300" width="17"></i>
           </div>
           <div class="mt-5 space-y-3">
-           <div class="flex items-center justify-between border-b border-cyan-100/10 pb-3">
-            <span data-template-id="activity-one-label" class="canva-text text-xs text-slate-400"></span> <span data-template-id="activity-one-value" class="canva-text text-xs font-semibold text-cyan-200"></span>
+           <div class="flex items-center justify-between border-b border-cyan-100/10 pb-3"><span data-template-id="activity-one-label" class="canva-text text-xs text-slate-400"></span> <span data-template-id="activity-one-value" class="canva-text text-xs font-semibold text-cyan-200"></span>
            </div>
-           <div class="flex items-center justify-between border-b border-cyan-100/10 pb-3">
-            <span data-template-id="activity-two-label" class="canva-text text-xs text-slate-400"></span> <span data-template-id="activity-two-value" class="canva-text text-xs font-semibold text-cyan-200"></span>
+           <div class="flex items-center justify-between border-b border-cyan-100/10 pb-3"><span data-template-id="activity-two-label" class="canva-text text-xs text-slate-400"></span> <span data-template-id="activity-two-value" class="canva-text text-xs font-semibold text-cyan-200"></span>
            </div>
-           <div class="flex items-center justify-between">
-            <span data-template-id="activity-three-label" class="canva-text text-xs text-slate-400"></span> <span data-template-id="activity-three-value" class="canva-text text-xs font-semibold text-cyan-200"></span>
+           <div class="flex items-center justify-between"><span data-template-id="activity-three-label" class="canva-text text-xs text-slate-400"></span> <span data-template-id="activity-three-value" class="canva-text text-xs font-semibold text-cyan-200"></span>
            </div>
           </div>
          </div>
@@ -609,15 +581,13 @@
        <p data-template-id="transparency-copy" class="canva-text section-copy mt-6 max-w-xl"></p><a class="primary-button mt-8" href="https://github.com" target="_blank" rel="noopener noreferrer"> <span data-template-id="transparency-button-label" class="canva-text"></span> <i data-lucide="external-link" width="17" height="17"></i> </a>
       </div>
       <aside data-template-id="transparency-panel" class="canva-panel rounded-2xl border border-cyan-200/15 bg-[#07111F]/65 p-7">
-       <div class="flex items-start gap-4">
-        <span class="rounded-xl bg-cyan-300/10 p-3 text-cyan-300"><i data-lucide="shield-check" width="25" height="25"></i></span>
+       <div class="flex items-start gap-4"><span class="rounded-xl bg-cyan-300/10 p-3 text-cyan-300"><i data-lucide="shield-check" width="25" height="25"></i></span>
         <div>
          <p data-template-id="transparency-panel-title" class="canva-text font-bold text-slate-50"></p>
          <p data-template-id="transparency-panel-copy" class="canva-text mt-3 text-sm leading-7 text-slate-400"></p>
         </div>
        </div>
-       <div class="mt-7 grid grid-cols-3 gap-2 border-t border-cyan-100/10 pt-5">
-        <span data-template-id="transparency-item-one" class="canva-tag rounded-lg bg-cyan-300/5 px-2 py-2 text-center text-[10px] text-cyan-100"></span> <span data-template-id="transparency-item-two" class="canva-tag rounded-lg bg-cyan-300/5 px-2 py-2 text-center text-[10px] text-cyan-100"></span> <span data-template-id="transparency-item-three" class="canva-tag rounded-lg bg-cyan-300/5 px-2 py-2 text-center text-[10px] text-cyan-100"></span>
+       <div class="mt-7 grid grid-cols-3 gap-2 border-t border-cyan-100/10 pt-5"><span data-template-id="transparency-item-one" class="canva-tag rounded-lg bg-cyan-300/5 px-2 py-2 text-center text-[10px] text-cyan-100"></span> <span data-template-id="transparency-item-two" class="canva-tag rounded-lg bg-cyan-300/5 px-2 py-2 text-center text-[10px] text-cyan-100"></span> <span data-template-id="transparency-item-three" class="canva-tag rounded-lg bg-cyan-300/5 px-2 py-2 text-center text-[10px] text-cyan-100"></span>
        </div>
       </aside>
      </div>
@@ -630,8 +600,7 @@
         <p data-template-id="ecosystem-eyebrow" class="canva-text eyebrow mb-4"></p>
         <h2 data-template-id="ecosystem-title" class="canva-text section-title text-3xl font-bold sm:text-4xl"></h2>
         <p data-template-id="ecosystem-copy" class="canva-text section-copy mt-5"></p>
-        <div class="mt-8 flex flex-wrap gap-3">
-         <span data-template-id="ecosystem-telos" class="canva-tag rounded-full border border-cyan-200/20 bg-cyan-300/5 px-4 py-2 text-sm text-cyan-100"></span> <span data-template-id="ecosystem-defi" class="canva-tag rounded-full border border-cyan-200/20 bg-cyan-300/5 px-4 py-2 text-sm text-cyan-100"></span> <span data-template-id="ecosystem-liquidity" class="canva-tag rounded-full border border-cyan-200/20 bg-cyan-300/5 px-4 py-2 text-sm text-cyan-100"></span> <span data-template-id="ecosystem-community" class="canva-tag rounded-full border border-cyan-200/20 bg-cyan-300/5 px-4 py-2 text-sm text-cyan-100"></span> <span data-template-id="ecosystem-developers" class="canva-tag rounded-full border border-cyan-200/20 bg-cyan-300/5 px-4 py-2 text-sm text-cyan-100"></span>
+        <div class="mt-8 flex flex-wrap gap-3"><span data-template-id="ecosystem-telos" class="canva-tag rounded-full border border-cyan-200/20 bg-cyan-300/5 px-4 py-2 text-sm text-cyan-100"></span> <span data-template-id="ecosystem-defi" class="canva-tag rounded-full border border-cyan-200/20 bg-cyan-300/5 px-4 py-2 text-sm text-cyan-100"></span> <span data-template-id="ecosystem-liquidity" class="canva-tag rounded-full border border-cyan-200/20 bg-cyan-300/5 px-4 py-2 text-sm text-cyan-100"></span> <span data-template-id="ecosystem-community" class="canva-tag rounded-full border border-cyan-200/20 bg-cyan-300/5 px-4 py-2 text-sm text-cyan-100"></span> <span data-template-id="ecosystem-developers" class="canva-tag rounded-full border border-cyan-200/20 bg-cyan-300/5 px-4 py-2 text-sm text-cyan-100"></span>
         </div>
        </div>
       </div>
@@ -646,8 +615,7 @@
        </div>
        <p data-template-id="community-copy" class="canva-text max-w-sm text-sm leading-6 text-slate-400"></p>
       </div>
-      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-       <a data-template-id="social-x-card" class="canva-card panel card-hover rounded-xl p-5" href="https://x.com" target="_blank" rel="noopener noreferrer"> <i data-lucide="twitter" class="text-cyan-300" width="21"></i> <h3 data-template-id="social-x-title" class="canva-text mt-7 font-bold"></h3><p data-template-id="social-x-copy" class="canva-text mt-2 text-sm text-slate-400"></p></a> <a data-template-id="social-discord-card" class="canva-card panel card-hover rounded-xl p-5" href="https://discord.com" target="_blank" rel="noopener noreferrer"> <i data-lucide="message-circle" class="text-cyan-300" width="21"></i> <h3 data-template-id="social-discord-title" class="canva-text mt-7 font-bold"></h3><p data-template-id="social-discord-copy" class="canva-text mt-2 text-sm text-slate-400"></p></a> <a data-template-id="social-telegram-card" class="canva-card panel card-hover rounded-xl p-5" href="https://telegram.org" target="_blank" rel="noopener noreferrer"> <i data-lucide="send" class="text-cyan-300" width="21"></i> <h3 data-template-id="social-telegram-title" class="canva-text mt-7 font-bold"></h3><p data-template-id="social-telegram-copy" class="canva-text mt-2 text-sm text-slate-400"></p></a> <a data-template-id="social-github-card" class="canva-card panel card-hover rounded-xl p-5" href="https://github.com" target="_blank" rel="noopener noreferrer"> <i data-lucide="github" class="text-cyan-300" width="21"></i> <h3 data-template-id="social-github-title" class="canva-text mt-7 font-bold"></h3><p data-template-id="social-github-copy" class="canva-text mt-2 text-sm text-slate-400"></p></a>
+      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"><a data-template-id="social-x-card" class="canva-card panel card-hover rounded-xl p-5" href="https://x.com" target="_blank" rel="noopener noreferrer"> <i data-lucide="twitter" class="text-cyan-300" width="21"></i> <h3 data-template-id="social-x-title" class="canva-text mt-7 font-bold"></h3><p data-template-id="social-x-copy" class="canva-text mt-2 text-sm text-slate-400"></p></a> <a data-template-id="social-discord-card" class="canva-card panel card-hover rounded-xl p-5" href="https://discord.com" target="_blank" rel="noopener noreferrer"> <i data-lucide="message-circle" class="text-cyan-300" width="21"></i> <h3 data-template-id="social-discord-title" class="canva-text mt-7 font-bold"></h3><p data-template-id="social-discord-copy" class="canva-text mt-2 text-sm text-slate-400"></p></a> <a data-template-id="social-telegram-card" class="canva-card panel card-hover rounded-xl p-5" href="https://telegram.org" target="_blank" rel="noopener noreferrer"> <i data-lucide="send" class="text-cyan-300" width="21"></i> <h3 data-template-id="social-telegram-title" class="canva-text mt-7 font-bold"></h3><p data-template-id="social-telegram-copy" class="canva-text mt-2 text-sm text-slate-400"></p></a> <a data-template-id="social-github-card" class="canva-card panel card-hover rounded-xl p-5" href="https://github.com" target="_blank" rel="noopener noreferrer"> <i data-lucide="github" class="text-cyan-300" width="21"></i> <h3 data-template-id="social-github-title" class="canva-text mt-7 font-bold"></h3><p data-template-id="social-github-copy" class="canva-text mt-2 text-sm text-slate-400"></p></a>
       </div>
      </div>
     </section>
@@ -659,8 +627,7 @@
        <p data-template-id="footer-name" class="canva-text text-base font-bold tracking-[0.08em]"></p>
        <p data-template-id="footer-tagline" class="canva-text mt-3 max-w-sm text-sm leading-6 text-slate-400"></p>
       </div>
-      <nav class="grid grid-cols-2 gap-3 text-sm sm:grid-cols-3" aria-label="Footer navigation">
-       <a data-template-id="footer-protocol" class="canva-link text-slate-400 hover:text-cyan-200" href="#protocol"></a> <a data-template-id="footer-bonds" class="canva-link text-slate-400 hover:text-cyan-200" href="#bonds"></a> <a data-template-id="footer-docs" class="canva-link text-slate-400 hover:text-cyan-200" href="#transparency"></a> <a data-template-id="footer-community" class="canva-link text-slate-400 hover:text-cyan-200" href="#community"></a> <a data-template-id="footer-github" class="canva-link text-slate-400 hover:text-cyan-200" href="https://github.com" target="_blank" rel="noopener noreferrer"></a> <a data-template-id="footer-terms" class="canva-link text-slate-400 hover:text-cyan-200" href="#risk"></a>
+      <nav class="grid grid-cols-2 gap-3 text-sm sm:grid-cols-3" aria-label="Footer navigation"><a data-template-id="footer-protocol" class="canva-link text-slate-400 hover:text-cyan-200" href="#protocol"></a> <a data-template-id="footer-bonds" class="canva-link text-slate-400 hover:text-cyan-200" href="#bonds"></a> <a data-template-id="footer-docs" class="canva-link text-slate-400 hover:text-cyan-200" href="#transparency"></a> <a data-template-id="footer-community" class="canva-link text-slate-400 hover:text-cyan-200" href="#community"></a> <a data-template-id="footer-github" class="canva-link text-slate-400 hover:text-cyan-200" href="https://github.com" target="_blank" rel="noopener noreferrer"></a> <a data-template-id="footer-terms" class="canva-link text-slate-400 hover:text-cyan-200" href="#risk"></a>
       </nav>
      </div>
      <div id="risk" data-template-id="risk-disclosure" class="canva-banner mt-10 rounded-xl border border-amber-200/15 bg-amber-200/[0.035] p-5">
